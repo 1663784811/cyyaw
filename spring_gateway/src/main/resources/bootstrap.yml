@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888
+      name: cyyaw-spring-gateway
+      label: master
+      profile: dev

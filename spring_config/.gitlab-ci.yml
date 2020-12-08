@@ -1,0 +1,39 @@
+stages:
+  - build
+  - packgeimage
+  - push
+  - run
+  - backfile
+
+###############################   打包 jar
+build:
+  stage: build
+  only:
+    - master
+  script:
+    - pwd
+    - mvn clean package -Dmaven.test.skip=true
+    - scp docker/* root@192.168.1.130:spring_config/
+    - scp target/config-0.0.1-SNAPSHOT.jar root@192.168.1.130:spring_config/
+
+###############################   发送到目标机器的
+push:
+  stage: push
+  script:
+    - ssh -t root@192.168.1.130 "cd /root/spring_config && docker build -t spring_config ."
+
+###############################   启动新服务
+run:
+  stage: run
+  script:
+    - ssh -t root@192.168.1.130 "cd /root/spring_config && docker-compose down && docker-compose up -d "
+
+
+
+
+
+###############################   备份文件
+backfile:
+  stage: backfile
+  script:
+    - pwd

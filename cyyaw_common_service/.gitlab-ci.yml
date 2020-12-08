@@ -1,0 +1,28 @@
+stages:
+  - build
+  - push
+  - run
+  - clean
+
+build:
+  stage: build
+  script:
+    - pwd
+    - mvn deploy
+    #mvn clean package install -Dmaven.test.skip=true;
+
+
+push:
+  stage: push
+  script:
+    - pwd
+
+run:
+  stage: run
+  script:
+    - pwd
+
+clean:
+  stage: clean
+  script:
+    - pwd

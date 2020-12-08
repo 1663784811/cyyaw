@@ -1,0 +1,25 @@
+package com.cyyaw.server.admin.common.service;
+
+import com.alibaba.fastjson.JSONObject;
+
+import java.util.Map;
+
+public interface CommonService {
+
+
+    /**
+     * 通用查询
+     */
+    Map<String, Object>  query(JSONObject json);
+
+    /**
+     * 通用更新
+     * @return
+     */
+    Map<String, Object> update(JSONObject json);
+
+    /**
+     * 通用删除
+     */
+    Map<String, Object> delete(JSONObject json);
+}

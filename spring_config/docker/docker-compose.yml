@@ -1,0 +1,8 @@
+version: '3.1'
+services:
+  itoken-config:
+    restart: always
+    image: spring_config
+    container_name: spring_config
+    ports:
+      - 8888:8888

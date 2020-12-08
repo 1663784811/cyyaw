@@ -1,0 +1,37 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://192.168.1.110/cyyaw/config-respo.git
+          search-paths:
+          username: root  #账号密码写真实的快一些我觉得，不使用也能访问有点慢
+          password: 12345678
+
+  rabbitmq: #本地环境不需要配置mq
+    host: 192.168.1.110
+    port: 5672
+    username: guest
+    password: guest
+
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:9090/eureka/
+
+
+
+
+
+
+security:                       #是否开启基本的鉴权，默认为true
+  basic:
+    enabled: true
