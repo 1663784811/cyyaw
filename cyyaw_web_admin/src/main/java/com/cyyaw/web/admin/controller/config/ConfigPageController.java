@@ -1,4 +1,4 @@
-package com.cyyaw.web.admin.controller;
+package com.cyyaw.web.admin.controller.config;
 
 import com.cyyaw.common.res.BaseResult;
 import com.cyyaw.web.admin.service.PageService;
