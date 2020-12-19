@@ -1,7 +1,7 @@
 spring:
   cloud:
     config:
-      uri: http://192.168.1.130:8888
+      uri: http://192.168.0.100:8888
       name: cyyaw-service-page
       label: master
       profile: dev
