@@ -12,10 +12,18 @@ import java.util.Map;
 public interface SsoService {
 
     @RequestMapping(value = "/login/userLoing" ,produces = "application/json; charset=UTF-8")
-    BaseResult userLoing(String username, String password, String checkCode);
+    BaseResult userLoing(
+            @RequestParam("username") String username,
+            @RequestParam("password")  String password,
+            @RequestParam("checkCode")  String checkCode
+    );
 
     @RequestMapping(value = "/login/adminLoing" ,produces = "application/json; charset=UTF-8")
-    BaseResult adminLoing(String username, String password, String checkCode);
+    BaseResult adminLoing(
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
+            @RequestParam("checkCode") String checkCode
+    );
 
 
     @RequestMapping(value = "/login/logout" ,produces = "application/json; charset=UTF-8")

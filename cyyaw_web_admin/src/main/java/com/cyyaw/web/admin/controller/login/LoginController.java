@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/login/")
+@RequestMapping("/login")
 @RestController
 public class LoginController {
 
@@ -19,7 +19,7 @@ public class LoginController {
      * 用户登录
      */
     @PostMapping("/userLoing")
-    public BaseResult userLoing(String username, String password, String checkCode){
+    public BaseResult userLoing(String username, String password, String checkCode) {
         return  ssoService.userLoing(username,password,checkCode);
     }
 
@@ -27,15 +27,16 @@ public class LoginController {
      * 管理员登录
      */
     @PostMapping("/adminLoing")
-    public BaseResult adminLoing(String username, String password, String checkCode){
+    public BaseResult adminLoing(String username, String password, String checkCode) {
         return  ssoService.adminLoing(username,password,checkCode);
     }
+
 
     /**
      * 退出登录
      */
     @PostMapping("/logout")
-    public BaseResult logout(){
+    public BaseResult logout() {
         return  ssoService.logout();
     }
 

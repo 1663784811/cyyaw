@@ -20,4 +20,12 @@ public class MenuController {
         return  menuService.getAdminMenu(adminid);
     }
 
+
+
+
+    @RequestMapping("/getMenuList")
+    public BaseResult getMenuList(Integer page, Integer size){
+        return  menuService.getMenuList(page,size);
+    }
+
 }

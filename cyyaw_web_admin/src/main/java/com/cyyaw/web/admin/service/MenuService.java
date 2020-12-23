@@ -10,6 +10,10 @@ public interface MenuService {
 
 
     @RequestMapping(value = "/tx/admin/menu/getAdminMenu" ,produces = "application/json; charset=UTF-8")
-    BaseResult getAdminMenu(@RequestParam("adminid") String adminid);
+    BaseResult getAdminMenu(
+            @RequestParam("adminid") String adminid
+    );
 
+    @RequestMapping(value = "/tx/admin/menu/getMenuList" ,produces = "application/json; charset=UTF-8")
+    BaseResult getMenuList(@RequestParam("page") Integer page, @RequestParam("size") Integer size);
 }
