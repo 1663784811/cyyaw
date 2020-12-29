@@ -1,5 +1,5 @@
 server:
-  port: 7003
+  port: 7005
 
 spring:
   application:
@@ -20,6 +20,11 @@ spring:
     multipart: ################## 上传文件
       max-file-size: 10MB
       max-request-size: 10MB
+  elasticsearch:
+    rest:
+      uris:
+        -http://localhost:9200
+
 
 web:
   resources:
