@@ -45,11 +45,14 @@ spring:
           uri: lb://cyyaw-web-admin
           predicates:
             - Path=/tx/**
-        - id: path3
+        - id: path4
           uri: lb://cyyaw-web-admin
           predicates:
             - Path=/config/**
-
+        - id: path5
+          uri: lb://cyyaw-web-admin
+          predicates:
+            - Path=/pc/**
 
 management:
   endpoints:
