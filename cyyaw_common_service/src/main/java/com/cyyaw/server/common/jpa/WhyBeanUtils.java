@@ -1,4 +1,4 @@
-package com.cyyaw.common.jpa;
+package com.cyyaw.server.common.jpa;
 
 
 import com.cyyaw.common.util.ArrayUtils;
