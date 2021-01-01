@@ -53,7 +53,10 @@ spring:
           uri: lb://cyyaw-web-admin
           predicates:
             - Path=/pc/**
-
+        - id: path6
+          uri: lb://cyyaw-web-admin
+          predicates:
+            - Path=/store/**
 management:
   endpoints:
     web:
