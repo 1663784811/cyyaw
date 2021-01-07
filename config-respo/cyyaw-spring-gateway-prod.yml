@@ -57,6 +57,10 @@ spring:
           uri: lb://cyyaw-web-admin
           predicates:
             - Path=/store/**
+        - id: path6
+          uri: lb://cyyaw-service-sso
+          predicates:
+            - Path=/login/**
 management:
   endpoints:
     web:
