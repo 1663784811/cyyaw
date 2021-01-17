@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>爬虫监控台</title>
+    <link rel="stylesheet" type="text/css" href="./plugins/iview/styles/iview.css">
+    <link href="./css/common.css" rel="stylesheet">
+    <link href="./css/index.css" rel="stylesheet">
+</head>
+<body>
+<div id="app" class="clear_f">
+    <div class="header clear_f">
+        <div class="headerLeft">
+            <ul class="menuBox">
+                <li>
+                    <div class="menuBtn" @click="showType('main')">首页</div>
+                </li>
+                <li>
+                    <div class="menuBtn" @click="showType('img')">图片</div>
+                </li>
+                <li>
+                    <div class="menuBtn" @click="showType('map')">地图</div>
+                </li>
+            </ul>
+        </div>
+        <div class="headerMiddle">
+            <div class="inputBox">
+                <div class="inputdiv">
+                    <input type="text">
+                </div>
+                <div class="searchBtn">
+                    <i-button type="primary" shape="circle" icon="ios-search" @click="clickSearch">搜索</i-button>
+                </div>
+            </div>
+        </div>
+        <div class="headerRight">sdd</div>
+    </div>
+    <div class="mainBox clear_f">
+        <div class="mainContainer clear_f">
+            <div class="leftBox">
+                <div class="speedBox reptilesing">
+                    <h2>爬取状态</h2>
+                    <div v-for="(item,index) in reptilesInfo" :key="index">
+                        <div>{{index}}----{{item}}</div>
+                    </div>
+                </div>
+                <div class="speedBox">
+                    <div ref="speedPic" style="width: 100%;height: 180px"></div>
+                </div>
+                <div class="speedBox">
+                    <h2>爬取速度</h2>
+                    <div>
+                        <div ref="speedTable" style="width: 100%;height: 180px"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="middleBox">
+                <div class="mapBox">
+                    df
+                </div>
+                <div class="middle">
+                    <div class="searchRest" v-show="maincontent=='search'">
+                        <div class="searchItem" v-for="(item,index) in searchRest" :key="index">
+                            <h3 class="title" @click="clickSearchRest(item)">{{item.title}}</h3>
+                            <div class="searchContent">{{item.contenttxt}}</div>
+                        </div>
+                        <div class="pageBox">
+                            <page :total="searchPage.total"
+                                  :current="searchPage.page"
+                                  :page-size="searchPage.size"
+                                  show-sizer
+                                  @on-change="onchangePageFn"
+                            />
+                        </div>
+                        <modal v-model="showRest" width="auto" :styles="{margin:'60px'}">
+                            <p slot="header" style="text-align:center">
+                                <span>{{findRestData.title}}</span>
+                            </p>
+                            <div style="text-align:center;" v-if="findRestData.tid">
+                                <iframe style="width: 100%;height:600px" :src="'/html.html?tid='+findRestData.tid" frameborder="0"></iframe>
+                            </div>
+                        </modal>
+                    </div>
+                    <div class="picBox" v-show="maincontent=='img'">
+                        <div class="imgBox" v-for="(item,index) in imgData" :key="index">
+                            <img :src="item.url" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rightBox clear_f">
+                <div class="speedBox">
+                    <h2>数据库储存量</h2>
+                    <div class="echarSpeed" ref="echarSpeed"></div>
+                </div>
+                <div class="speedBox">
+                    <h2>dsfdsfs</h2>
+                    <div class="echarSpeed" ref="echarSpeed"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="http://api.map.baidu.com/api?v=3.0&ak=ysiGxkleHvbefm3HDrsKKmsbRVw7vg06"></script>
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=cc62e57f63e596b7d7cd6d36d2948a7a"></script>
+<script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&key=RVJBZ-CULWW-RVIRM-O6ZMM-APZK5-5YBN4"></script>
+
+<script src="./js/vue.min.js"></script>
+<script src="./plugins/axios/axios.min.js"></script>
+<script src="./plugins/iview/iview.min.js"></script>
+<script src="./plugins/mock/mock-min.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/indexMock.js"></script>
+
+<script src="./plugins/echarts/echarts.min.js"></script>
+<script src="./js/index.js"></script>
+
+</body>
+</html>

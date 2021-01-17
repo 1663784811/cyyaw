@@ -26,13 +26,13 @@ public class OOrder implements Serializable {
     @Column(name = "tid", unique = true, length = 32, columnDefinition = "varchar(32) not null COMMENT 'tid'")
     private String tid;
     @Basic
-    @Column(name = "del", length = 10, columnDefinition = "int COMMENT '是否删除{0:否,1:是}'")
+    @Column(name = "del", length = 10, columnDefinition = "int default '0' COMMENT '是否删除{0:否,1:是}'")
     private Integer del;
     @Basic
     @Column(name = "note", columnDefinition = "varchar(255) COMMENT '备注'")
     private String note;
     @Basic
-    @Column(name = "createtime", length = 19, columnDefinition = "datetime COMMENT '创建时间'")
+    @Column(name = "createtime", length = 19, columnDefinition = "datetime default now() COMMENT '创建时间'")
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")

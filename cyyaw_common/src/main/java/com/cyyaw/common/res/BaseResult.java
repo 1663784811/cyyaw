@@ -1,5 +1,6 @@
 package com.cyyaw.common.res;
 
+import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -60,8 +61,15 @@ public class BaseResult implements Serializable {
     }
     @Data
     public static class Result {
-        private int total;
-        private int page;
-        private int size;
+        private Long total;
+        private Integer page;
+        private Integer size;
+        public Result() {
+        }
+        public Result( Integer page, Integer size, Long total) {
+            this.total = total;
+            this.page = page;
+            this.size = size;
+        }
     }
 }

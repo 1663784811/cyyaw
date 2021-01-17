@@ -2,8 +2,8 @@ package com.cyyaw.server.sso.table.service.impl;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.cyyaw.common.jpa.BaseDao;
-import com.cyyaw.common.jpa.BaseService;
+import com.cyyaw.server.common.jpa.BaseDao;
+import com.cyyaw.server.common.jpa.BaseService;
 import com.cyyaw.server.sso.table.service.OOrderService;
 import com.cyyaw.server.sso.table.table.dao.OOrderDao;
 import com.cyyaw.server.sso.table.table.entity.OOrder;

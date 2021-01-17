@@ -2,7 +2,7 @@ package com.cyyaw.server.sso.table.service;
 
 
 import com.alibaba.fastjson.JSONArray;
-import com.cyyaw.common.jpa.BaseTableService;
+import com.cyyaw.server.common.jpa.BaseTableService;
 import com.cyyaw.server.sso.table.table.entity.OOrder;
 
 public interface OOrderService extends BaseTableService<OOrder, Integer> {

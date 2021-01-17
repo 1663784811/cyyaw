@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <div v-html="findRestData.content"></div>
+</div>
+
+
+<script src="./js/vue.min.js"></script>
+<script src="./plugins/axios/axios.min.js"></script>
+<script src="./plugins/mock/mock-min.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/indexMock.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            findRestData: {},
+        },
+        mounted() {
+            let tid = getUrlParam("tid");
+            this.clickSearchRest(tid);
+        },
+        methods: {
+            clickSearchRest(tid) {
+                let that = this;
+                that.findRestData = {};
+                that.showRest = true;
+                GetRequest("/webcontent/findByTid", {tid: tid}).then((res) => {
+                    that.findRestData = res.data;
+                });
+            },
+        }
+    });
+</script>
+</body>
+</html>

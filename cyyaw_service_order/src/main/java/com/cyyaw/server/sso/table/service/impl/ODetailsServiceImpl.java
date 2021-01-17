@@ -1,8 +1,8 @@
 package com.cyyaw.server.sso.table.service.impl;
 
 
-import com.cyyaw.common.jpa.BaseDao;
-import com.cyyaw.common.jpa.BaseService;
+import com.cyyaw.server.common.jpa.BaseDao;
+import com.cyyaw.server.common.jpa.BaseService;
 import com.cyyaw.server.sso.table.service.ODetailsService;
 import com.cyyaw.server.sso.table.table.dao.ODetailsDao;
 import com.cyyaw.server.sso.table.table.entity.ODetails;

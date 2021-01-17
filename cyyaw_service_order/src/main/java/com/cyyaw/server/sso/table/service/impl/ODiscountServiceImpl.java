@@ -1,8 +1,8 @@
 package com.cyyaw.server.sso.table.service.impl;
 
 
-import com.cyyaw.common.jpa.BaseDao;
-import com.cyyaw.common.jpa.BaseService;
+import com.cyyaw.server.common.jpa.BaseDao;
+import com.cyyaw.server.common.jpa.BaseService;
 import com.cyyaw.server.sso.table.service.ODiscountService;
 import com.cyyaw.server.sso.table.table.dao.ODiscountDao;
 import com.cyyaw.server.sso.table.table.entity.ODiscount;
