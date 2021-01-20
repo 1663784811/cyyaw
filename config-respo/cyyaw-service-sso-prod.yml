@@ -21,6 +21,11 @@ spring:
       max-file-size: 10MB
       max-request-size: 10MB
 
+  redis:
+    host: 192.168.0.102
+
+
+
 web:
   resources:
     photo:
