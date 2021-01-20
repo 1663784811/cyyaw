@@ -1,4 +1,4 @@
-package com.cyyaw.server.config;
+package com.cyyaw.server.config.security;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

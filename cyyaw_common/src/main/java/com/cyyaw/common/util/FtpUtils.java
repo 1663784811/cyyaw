@@ -208,12 +208,12 @@ public class FtpUtils {
         return flag;
     }
 
-    public static void main(String[] args) {
-        FtpUtils ftp = new FtpUtils();
-        ftp.downloadFile("ftpFile/data", "123.docx", "F://");
-        ftp.deleteFile("ftpFile/data", "123.docx");
-        System.out.println("ok");
-    }
+//    public static void main(String[] args) {
+//        FtpUtils ftp = new FtpUtils();
+//        ftp.downloadFile("ftpFile/data", "123.docx", "F://");
+//        ftp.deleteFile("ftpFile/data", "123.docx");
+//        System.out.println("ok");
+//    }
 
 
 }

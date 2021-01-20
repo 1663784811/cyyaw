@@ -75,7 +75,7 @@ public class JwtTokenUtils {
      */
     public static String getId(String token) {
         DecodedJWT jwt = verifier.verify(token);
-        return jwt.getClaim("id").asString();
+        return jwt.getId();
     }
 
     /**

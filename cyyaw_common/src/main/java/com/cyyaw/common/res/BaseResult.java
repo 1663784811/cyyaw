@@ -36,6 +36,10 @@ public class BaseResult implements Serializable {
         return createResult(CodeEnum.SUCCESS, data, null, null);
     }
 
+    public static BaseResult ok(Object data,String msg) {
+        return createResult(CodeEnum.SUCCESS, data, null, msg);
+    }
+
     public static BaseResult ok(Object data, Result result) {
         return createResult(CodeEnum.SUCCESS, data, result, null);
     }
