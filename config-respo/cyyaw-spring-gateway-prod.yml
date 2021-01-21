@@ -42,6 +42,7 @@ spring:
             - Path=/config/**
             - Path=/pc/**
             - Path=/store/**
+            - Path=/upload/**
         ###############    登录
         - id: path6
           uri: lb://cyyaw-service-sso
