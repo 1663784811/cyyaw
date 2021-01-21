@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: cyyaw-service-sso
+    name: cyyaw-service-user
   jpa: #数据库配置
     hibernate:
       ddl-auto: update
