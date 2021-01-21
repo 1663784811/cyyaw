@@ -1,9 +1,9 @@
 server:
-  port: 7003
+  port: 7009
 
 spring:
   application:
-    name: cyyaw-service-page
+    name: cyyaw-service-upload
   jpa: #数据库配置
     hibernate:
       ddl-auto: update
