@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 @Slf4j
@@ -24,5 +26,9 @@ public class GDetailsServiceImpl extends BaseService<GDetails, Integer> implemen
         return gDetailsDao;
     }
 
+    @Override
+    public List<GDetails> findByGoodsid(String goodsid) {
+        return gDetailsDao.findByGoodsid(goodsid);
+    }
 }
 

@@ -21,7 +21,7 @@ public class EAdmin implements Serializable {
     @Column(name = "id", unique = true, nullable = false, columnDefinition = "int auto_increment COMMENT 'id'")
     private Integer id;
     @Basic
-    @Column(name = "account", length = 32, nullable = true, columnDefinition = "varchar(32) COMMENT '账号'")
+    @Column(name = "account", unique = true, nullable = true, columnDefinition = "varchar(32) COMMENT '账号'")
     private String account;
     @Basic
     @Column(name = "canlogintime", length = 19, nullable = true, columnDefinition = "datetime COMMENT '可登录时间'")
@@ -57,7 +57,7 @@ public class EAdmin implements Serializable {
     @Column(name = "note", nullable = true, columnDefinition = "varchar(255) COMMENT '备注'")
     private String note;
     @Basic
-    @Column(name = "password", length = 32, nullable = true, columnDefinition = "varchar(32) COMMENT '密码'")
+    @Column(name = "password", nullable = true, columnDefinition = "varchar(64) COMMENT '密码'")
     private String password;
     @Basic
     @Column(name = "phone", length = 15, nullable = true, columnDefinition = "varchar(15) COMMENT '手机号'")

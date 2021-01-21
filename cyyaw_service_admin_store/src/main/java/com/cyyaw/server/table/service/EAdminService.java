@@ -7,5 +7,7 @@ import com.cyyaw.server.table.entity.EAdmin;
 public interface EAdminService extends BaseTableService<EAdmin, Integer> {
 
 
+    EAdmin findByAccount(String account);
+
 
 }

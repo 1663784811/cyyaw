@@ -35,5 +35,10 @@ public class GoodsController {
     }
 
 
+    @GetMapping("/details/findByGoodsid")
+    public BaseResult findDetailsByGoodsid(@RequestParam(value = "goodsid") String goodsid) {
+        return goodsService.findDetailsByGoodsid(goodsid);
+    }
+
 
 }

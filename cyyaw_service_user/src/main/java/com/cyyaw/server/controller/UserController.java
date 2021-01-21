@@ -28,7 +28,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/saveUser")
+    @RequestMapping("/saveUser")
     public BaseResult saveUser(@RequestBody UUser user) {
         String password = user.getPassword();
         String account = user.getAccount();

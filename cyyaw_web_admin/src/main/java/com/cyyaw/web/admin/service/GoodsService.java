@@ -19,4 +19,7 @@ public interface GoodsService {
 
     @RequestMapping(value = "/goods/goodsInfo" ,produces = "application/json; charset=UTF-8")
     BaseResult goodsInfo(@RequestParam(value = "goodsid") String goodsid);
+
+    @RequestMapping(value = "/goods/details/findByGoodsid" ,produces = "application/json; charset=UTF-8")
+    BaseResult findDetailsByGoodsid(String goodsid);
 }

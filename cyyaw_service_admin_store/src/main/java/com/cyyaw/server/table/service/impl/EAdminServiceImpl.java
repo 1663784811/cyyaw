@@ -24,5 +24,9 @@ public class EAdminServiceImpl extends BaseService<EAdmin, Integer> implements E
         return eAdminDao;
     }
 
+    @Override
+    public EAdmin findByAccount(String account) {
+        return eAdminDao.findByAccount(account);
+    }
 }
 
