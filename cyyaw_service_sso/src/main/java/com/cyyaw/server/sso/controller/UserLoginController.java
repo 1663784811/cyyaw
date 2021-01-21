@@ -8,28 +8,23 @@ import com.cyyaw.common.util.JwtTokenUtils;
 import com.cyyaw.common.util.StringUtilWHY;
 import com.cyyaw.server.config.security.entity.UserInfo;
 import com.cyyaw.server.sso.redis.TokenRepository;
-import com.cyyaw.server.sso.service.StoreService;
-
+import com.cyyaw.server.sso.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.TimeToLive;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.jaas.JaasGrantedAuthority;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
-import java.math.BigDecimal;
 import java.util.*;
 
 @RequestMapping("/login/store")
 @RestController
-public class StoreLoginController {
+public class UserLoginController {
 
 
     @Autowired
-    private StoreService storeService;
+    private UserService userService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -49,7 +44,7 @@ public class StoreLoginController {
         String tokenstr = request.getHeader("token");
         String msg = null;
         if (!StringUtilWHY.isEmpty(account) && !StringUtilWHY.isEmpty(password)) {
-            BaseResult baseres = storeService.findUserByAccount(account);
+            BaseResult baseres = userService.findUserByAccount(account);
             if (baseres.getCode() != 200) {
                 return baseres;
             }
@@ -121,7 +116,7 @@ public class StoreLoginController {
             String pwd = passwordEncoder.encode(password + salt);
             json.put("password", pwd);
             json.put("salt", salt);
-            return  storeService.saveUser(json);
+            return  userService.saveUser(json);
         } else {
             return BaseResult.ok("注册失败");
         }

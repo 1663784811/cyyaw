@@ -1,7 +1,6 @@
 package com.cyyaw.server.controller;
 
 
-import com.alibaba.fastjson.JSONObject;
 import com.cyyaw.common.res.BaseResult;
 import com.cyyaw.common.util.StringUtilWHY;
 import com.cyyaw.server.table.entity.UUser;
@@ -9,7 +8,6 @@ import com.cyyaw.server.table.service.UUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 
 @RequestMapping("/user")
 @RestController

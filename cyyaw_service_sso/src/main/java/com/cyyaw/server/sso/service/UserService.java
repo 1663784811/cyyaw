@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @FeignClient(value = "cyyaw-service-user")
-public interface StoreService {
+public interface UserService {
 
 
     @RequestMapping(value = "/user/findUserByAccount" ,produces = "application/json; charset=UTF-8")
