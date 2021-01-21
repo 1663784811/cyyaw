@@ -8,17 +8,16 @@
         <version>2.3.5.RELEASE</version>
         <relativePath/>
     </parent>
-    <groupId>com.cyyaw.server.admin</groupId>
-    <artifactId>sso</artifactId>
+    <groupId>com.cyyaw.server</groupId>
+    <artifactId>user</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>cyyaw_service_sso</name>
-    <description>听心页面服务</description>
+    <name>cyyaw_service_user</name>
+    <description>用户服务</description>
 
     <properties>
         <java.version>1.8</java.version>
         <spring-boot-admin.version>2.3.1</spring-boot-admin.version>
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
-
     </properties>
 
     <dependencies>
@@ -47,27 +46,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-
-
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.47</version>
-        </dependency>
-
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -100,17 +78,17 @@
 
     <!-- =============      拉取jar        ============== -->
     <repositories>
-        <repository>
-            <id>nexus</id>
-            <name>Nexus Repository</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
+<!--        <repository>-->
+<!--            <id>nexus</id>-->
+<!--            <name>Nexus Repository</name>-->
+<!--            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
+<!--            <snapshots>-->
+<!--                <enabled>true</enabled>-->
+<!--            </snapshots>-->
+<!--            <releases>-->
+<!--                <enabled>true</enabled>-->
+<!--            </releases>-->
+<!--        </repository>-->
     </repositories>
 
 
