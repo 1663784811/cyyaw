@@ -24,8 +24,8 @@ spring:
 web:
   resources:
     photo:
-      uploadPath: /etc/nginx/html/file
-      BaseUrl: http://file.dishijiaoyu.com
+      uploadPath: J:/server/nginx-1.19.6/html/upload
+      BaseUrl: http://file.cyyaw.com
 
 logging:
   level:
