@@ -37,17 +37,32 @@ spring:
           uri: lb://cyyaw-web-app # 匹配后提供服务的路由地址;   uri: http://localhost:8001
           predicates:
             - Path=/app/** # 断言，路径相匹配的进行路由
+        - id: path2
+          uri: lb://cyyaw-web-admin
+          predicates:
             - Path=/admin/**
+        - id: path3
+          uri: lb://cyyaw-web-admin
+          predicates:
             - Path=/tx/**
+        - id: path4
+          uri: lb://cyyaw-web-admin
+          predicates:
             - Path=/config/**
+        - id: path5
+          uri: lb://cyyaw-web-admin
+          predicates:
             - Path=/pc/**
+        - id: path6
+          uri: lb://cyyaw-web-admin
+          predicates:
             - Path=/store/**
         ###############    登录
         - id: path6
           uri: lb://cyyaw-service-sso
           predicates:
             - Path=/login/**
-        - id: path2
+        - id: path7
           uri: lb://cyyaw-service-upload
           predicates:
             - Path=/upload/**
