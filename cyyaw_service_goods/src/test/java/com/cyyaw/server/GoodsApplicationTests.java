@@ -21,6 +21,27 @@ public class GoodsApplicationTests {
 
     /**
      * 添加商品
+     *
+     * {
+     *     main:{
+     *
+     *     },
+     *     photos:[
+     *          {
+     *
+     *          }
+     *     ],
+     *     skus:[
+     *          {
+     *
+     *          }
+     *     ],
+     *     details:[
+     *
+     *     ]
+     * }
+     *
+     *
      */
     @Test
     public void test003(){

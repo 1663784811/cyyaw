@@ -1,5 +1,6 @@
 package com.cyyaw.server.goods.elasticsearch.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.cyyaw.common.res.BaseResult;
 import com.cyyaw.server.goods.elasticsearch.service.GoodsService;
 import com.cyyaw.server.goods.table.entity.GGoods;
@@ -31,11 +32,12 @@ public class GoodsController {
             @RequestParam(value = "size", defaultValue = "30") Integer size,
             @RequestParam(value = "search", required = false) String search
     ) {
-       return goodsService.search(search, page, size);
+        return goodsService.search(search, page, size);
     }
 
     /**
      * 导入 ElasticSearch
+     *
      * @return
      */
     @GetMapping("/importElasticSearch")
@@ -44,14 +46,13 @@ public class GoodsController {
     }
 
     @PostMapping("/saveGoods")
-    public void saveGoods(@RequestBody Map<String,Object> map){
-        goodsService.saveGoods(null);
+    public BaseResult saveGoods(@RequestBody JSONObject json) {
+        JSONObject obj = goodsService.saveGoods(json);
+        return BaseResult.ok(obj);
     }
 
     @PostMapping("/findSku")
-    public List<GSku> findSku(@RequestBody List<String> list){
-       return gSkuService.findBySkuList(list);
+    public List<GSku> findSku(@RequestBody List<String> list) {
+        return gSkuService.findBySkuList(list);
     }
-
-
 }
