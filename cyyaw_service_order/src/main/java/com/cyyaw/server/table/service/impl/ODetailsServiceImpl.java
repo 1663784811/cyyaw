@@ -1,11 +1,11 @@
-package com.cyyaw.server.sso.table.service.impl;
+package com.cyyaw.server.table.service.impl;
 
 
 import com.cyyaw.server.common.jpa.BaseDao;
 import com.cyyaw.server.common.jpa.BaseService;
-import com.cyyaw.server.sso.table.service.ODiscountService;
-import com.cyyaw.server.sso.table.table.dao.ODiscountDao;
-import com.cyyaw.server.sso.table.table.entity.ODiscount;
+import com.cyyaw.server.table.dao.ODetailsDao;
+import com.cyyaw.server.table.entity.ODetails;
+import com.cyyaw.server.table.service.ODetailsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,14 +14,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 @Slf4j
-public class ODiscountServiceImpl extends BaseService<ODiscount, Integer> implements ODiscountService {
+public class ODetailsServiceImpl extends BaseService<ODetails, Integer> implements ODetailsService {
 
     @Autowired
-    private ODiscountDao oDiscountDao;
+    private ODetailsDao oDetailsDao;
 
     @Override
     public BaseDao getBaseDao() {
-        return oDiscountDao;
+        return oDetailsDao;
     }
 
 }

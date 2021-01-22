@@ -1,4 +1,4 @@
-package com.cyyaw.server.sso.table.table.entity;
+package com.cyyaw.server.table.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonFormat;

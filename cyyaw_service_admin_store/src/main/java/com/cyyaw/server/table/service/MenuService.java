@@ -1,10 +1,8 @@
-package com.cyyaw.server.service;
+package com.cyyaw.server.table.service;
 
-import com.alibaba.fastjson.JSONObject;
 import com.cyyaw.server.table.entity.EPower;
 
 import java.util.List;
-import java.util.Map;
 
 public interface MenuService {
 

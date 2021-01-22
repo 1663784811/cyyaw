@@ -1,4 +1,4 @@
-package com.cyyaw.server.service;
+package com.cyyaw.server.table.service;
 
 
 

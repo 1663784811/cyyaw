@@ -1,8 +1,8 @@
-package com.cyyaw.server.service.impl;
+package com.cyyaw.server.table.service.impl;
 
 import com.cyyaw.common.util.StringUtilWHY;
 import com.cyyaw.server.dao.MenuDao;
-import com.cyyaw.server.service.MenuService;
+import com.cyyaw.server.table.service.MenuService;
 import com.cyyaw.server.table.entity.EPower;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

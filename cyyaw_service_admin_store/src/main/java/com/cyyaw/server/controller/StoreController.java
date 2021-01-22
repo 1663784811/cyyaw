@@ -2,7 +2,7 @@ package com.cyyaw.server.controller;
 
 
 import com.cyyaw.common.res.BaseResult;
-import com.cyyaw.server.service.MenuService;
+import com.cyyaw.server.table.service.MenuService;
 import com.cyyaw.server.table.entity.EPower;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

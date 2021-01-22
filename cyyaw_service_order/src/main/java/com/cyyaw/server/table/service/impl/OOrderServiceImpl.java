@@ -1,16 +1,22 @@
-package com.cyyaw.server.sso.table.service.impl;
+package com.cyyaw.server.table.service.impl;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.cyyaw.common.res.BaseResult;
 import com.cyyaw.server.common.jpa.BaseDao;
 import com.cyyaw.server.common.jpa.BaseService;
-import com.cyyaw.server.sso.table.service.OOrderService;
-import com.cyyaw.server.sso.table.table.dao.OOrderDao;
-import com.cyyaw.server.sso.table.table.entity.OOrder;
+import com.cyyaw.server.table.dao.OOrderDao;
+import com.cyyaw.server.table.entity.OOrder;
+import com.cyyaw.server.table.service.OOrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -38,6 +44,15 @@ public class OOrderServiceImpl extends BaseService<OOrder, Integer> implements O
         json.put("aaa4", "cccc");
         arr.add(json);
         return arr;
+    }
+
+    @Override
+    public BaseResult findOrderList(Integer page, Integer size) {
+        Pageable pageable = PageRequest.of(page-1, size);
+        Page<OOrder> all = oOrderDao.findAll(pageable);
+        List<OOrder> content = all.getContent();
+        long total = all.getTotalElements();
+        return BaseResult.ok(content, new BaseResult.Result(page,size, total));
     }
 }
 

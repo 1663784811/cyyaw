@@ -3,7 +3,7 @@ package com.cyyaw.server.pay.service.impl;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.cyyaw.server.pay.service.ComputedService;
-import com.cyyaw.server.service.GoodsService;
+import com.cyyaw.server.table.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
