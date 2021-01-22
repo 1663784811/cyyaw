@@ -1,8 +1,10 @@
 package com.cyyaw.web.admin.service;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.cyyaw.common.res.BaseResult;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -21,5 +23,11 @@ public interface GoodsService {
     BaseResult goodsInfo(@RequestParam(value = "goodsid") String goodsid);
 
     @RequestMapping(value = "/goods/details/findByGoodsid" ,produces = "application/json; charset=UTF-8")
-    BaseResult findDetailsByGoodsid(String goodsid);
+    BaseResult findDetailsByGoodsid(@RequestParam(value = "goodsid") String goodsid);
+
+    @RequestMapping(value = "/goods/depository/findDepositoryList" ,produces = "application/json; charset=UTF-8")
+    BaseResult findDepositoryList(@RequestParam(value = "page")Integer page,@RequestParam(value = "size") Integer size);
+
+    @RequestMapping(value = "/goods/depository/saveDepository" ,produces = "application/json; charset=UTF-8")
+    BaseResult saveDepository(@RequestBody JSONObject json);
 }
