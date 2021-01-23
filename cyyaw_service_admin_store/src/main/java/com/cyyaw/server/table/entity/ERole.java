@@ -46,8 +46,8 @@ public class ERole implements Serializable {
 
 
     @Basic
-    @Column(name = "pid", length = 10, columnDefinition = "int COMMENT '父级ID'")
-    private Integer pid;
+    @Column(name = "pid", columnDefinition = "varchar(32) COMMENT '父级ID'")
+    private String pid;
     @Basic
     @Column(name = "treecode", length = 10, columnDefinition = "varchar(32) not null default '' COMMENT '树码(一级三位)'")
     private String treecode;

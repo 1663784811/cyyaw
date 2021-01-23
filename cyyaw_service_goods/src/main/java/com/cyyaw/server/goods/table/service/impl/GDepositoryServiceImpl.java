@@ -39,7 +39,6 @@ public class GDepositoryServiceImpl extends BaseService<GDepository, Integer> im
         List<GDepository> content = all.getContent();
         long total = all.getTotalElements();
         return BaseResult.ok(content, new BaseResult.Result(page, size, total));
-
     }
 }
 
