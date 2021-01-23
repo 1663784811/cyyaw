@@ -16,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -45,6 +46,9 @@ public class ERoleServiceImpl extends BaseService<ERole, Integer> implements ERo
         String tid = eRole.getTid();
         String oldpid = null;
         String oldTreecode = null;
+        if(null == eRole.getCreatetime()){
+            eRole.setCreatetime(new Date());
+        }
         if(null == tid || tid.equals("")){
             eRole.setTid(StringUtilWHY.getUUID());
         }else{

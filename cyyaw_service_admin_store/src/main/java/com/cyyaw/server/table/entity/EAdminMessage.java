@@ -3,12 +3,14 @@ package com.cyyaw.server.table.entity;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.hibernate.annotations.DynamicInsert;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+@DynamicInsert
 @Data
 @Entity
 @Table(name = "e_admin_message")

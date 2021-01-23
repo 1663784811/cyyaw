@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-@RequestMapping("/store")
+@RequestMapping("/store/admin")
 @RestController
 public class StoreController {
 
@@ -15,24 +15,24 @@ public class StoreController {
     @Autowired
     private StoreService storeService;
 
-    @GetMapping("/admin/menu/getMenuList")
+    @GetMapping("/menu/getMenuList")
     public BaseResult getMenuList(){
         return storeService.getMenuList();
     }
 
-    @GetMapping("/admin/menu/getAdminMenu")
+    @GetMapping("/menu/getAdminMenu")
     public BaseResult getMenu(){
         return storeService.getMenu();
     }
 
-    @PostMapping("/admin/menu/updateMenu")
+    @PostMapping("/menu/updateMenu")
     public BaseResult updateMenu(@RequestBody Map<String,Object> map){
         return storeService.updateMenu(map);
     }
 
 
 
-    @PostMapping("/admin/menu/delMenu")
+    @PostMapping("/menu/delMenu")
     public BaseResult delMenu(@RequestBody Map<String,Object> map){
         return storeService.delMenu(map);
     }
