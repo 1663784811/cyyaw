@@ -29,7 +29,7 @@ public class GoodsController {
 
 
 
-    @GetMapping("/goodsInfo")
+    @GetMapping("/details/goodsInfo")
     public BaseResult goodsInfo(@RequestParam(value = "goodsid") String goodsid) {
         return goodsService.goodsInfo(goodsid);
     }

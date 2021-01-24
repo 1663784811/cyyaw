@@ -55,4 +55,10 @@ public class GoodsController {
     public List<GSku> findSku(@RequestBody List<String> list) {
         return gSkuService.findBySkuList(list);
     }
+
+
+
+
+
+
 }
