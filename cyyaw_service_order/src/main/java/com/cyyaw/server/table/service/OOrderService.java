@@ -2,6 +2,7 @@ package com.cyyaw.server.table.service;
 
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.cyyaw.common.res.BaseResult;
 import com.cyyaw.server.common.jpa.BaseTableService;
 import com.cyyaw.server.table.entity.OOrder;
@@ -18,4 +19,7 @@ public interface OOrderService extends BaseTableService<OOrder, Integer> {
     JSONArray findByUserid(String uid, Integer page, Integer size);
 
     BaseResult findOrderList(Integer page, Integer size);
+
+    BaseResult createOrder(JSONObject json);
+
 }

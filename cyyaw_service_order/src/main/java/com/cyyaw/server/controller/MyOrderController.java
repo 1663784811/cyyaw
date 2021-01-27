@@ -2,13 +2,11 @@ package com.cyyaw.server.controller;
 
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.cyyaw.common.res.BaseResult;
 import com.cyyaw.server.table.service.OOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/order")
 @RestController
@@ -17,6 +15,21 @@ public class MyOrderController {
     @Autowired
     private OOrderService oOrderService;
 
+    /**
+     * 生成订单
+     * @param json
+     * @return
+     */
+    @PostMapping("/createOrder")
+    public BaseResult createOrder(@RequestBody JSONObject json){
+
+
+        oOrderService.createOrder(json);
+
+
+
+        return BaseResult.ok();
+    }
 
     /**
      * 获取我的订单列表

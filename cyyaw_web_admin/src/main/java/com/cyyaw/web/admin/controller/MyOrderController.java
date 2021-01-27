@@ -1,12 +1,11 @@
 package com.cyyaw.web.admin.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.cyyaw.common.res.BaseResult;
 import com.cyyaw.web.admin.service.MyOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/admin/order")
 @RestController
@@ -28,4 +27,15 @@ public class MyOrderController {
     ){
         return  myOrderServicel.findOrderList(page,size);
     }
+
+
+
+    @PostMapping("/compute/computeGoods")
+    public BaseResult computeGoods(@RequestBody JSONObject json){
+        return  myOrderServicel.computeGoods(json);
+    }
+
+
+
+
 }

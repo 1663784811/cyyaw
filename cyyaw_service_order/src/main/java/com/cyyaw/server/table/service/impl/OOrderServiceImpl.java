@@ -54,5 +54,22 @@ public class OOrderServiceImpl extends BaseService<OOrder, Integer> implements O
         long total = all.getTotalElements();
         return BaseResult.ok(content, new BaseResult.Result(page,size, total));
     }
+
+    @Override
+    public BaseResult createOrder(JSONObject json) {
+
+
+
+
+
+
+
+
+
+
+
+
+        return null;
+    }
 }
 
