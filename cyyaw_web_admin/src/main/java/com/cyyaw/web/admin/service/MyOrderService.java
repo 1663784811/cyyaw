@@ -21,4 +21,7 @@ public interface MyOrderService {
 
     @RequestMapping(value = "/order/compute/computeGoods" ,produces = "application/json; charset=UTF-8")
     BaseResult computeGoods(@RequestBody JSONObject json);
+
+    @RequestMapping(value = "/order/createOrder" ,produces = "application/json; charset=UTF-8")
+    BaseResult createOrder(JSONObject json);
 }

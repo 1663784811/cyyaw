@@ -29,10 +29,16 @@ public class MyOrderController {
     }
 
 
-
     @PostMapping("/compute/computeGoods")
     public BaseResult computeGoods(@RequestBody JSONObject json){
         return  myOrderServicel.computeGoods(json);
+    }
+
+
+
+    @PostMapping("/createOrder")
+    public BaseResult createOrder(@RequestBody JSONObject json){
+        return  myOrderServicel.createOrder(json);
     }
 
 

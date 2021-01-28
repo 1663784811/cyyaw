@@ -20,6 +20,8 @@ public class Sku {
     private String goodsid;
     //商品图片
     private String photo;
+    //商品名
+    private String name;
     //json商品属性
     private String attribute;
 }

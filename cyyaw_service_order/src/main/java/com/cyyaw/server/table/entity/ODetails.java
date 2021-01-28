@@ -47,6 +47,10 @@ public class ODetails implements Serializable {
     @Column(name = "goodsid", columnDefinition = "varchar(32) not null COMMENT 'g_goods商品表ID'")
     private String goodsid;
 
+    @Basic
+    @Column(name = "skuid", columnDefinition = "varchar(32) not null COMMENT 'g_sku商品表ID'")
+    private String skuid;
+
     //==============
     @Basic
     @Column(name = "type", columnDefinition = "int not null default '0' COMMENT '商品类型{0:普通商品,1:赠品}'")
@@ -54,7 +58,7 @@ public class ODetails implements Serializable {
 
 
     @Basic
-    @Column(name = "name",  columnDefinition = "varchar(255) not null COMMENT '商品名称'")
+    @Column(name = "name",  columnDefinition = "varchar(255) COMMENT '商品名称'")
     private String name;
     @Basic
     @Column(name = "photo",  columnDefinition = "varchar(255) COMMENT '商品主图片'")
@@ -69,7 +73,7 @@ public class ODetails implements Serializable {
     private BigDecimal lastprice;
 
     @Basic
-    @Column(name = "number", columnDefinition = "int COMMENT '商品数量'")
-    private Integer number;
+    @Column(name = "number", columnDefinition = "decimal(18,2) COMMENT '商品数量'")
+    private BigDecimal number;
 
 }

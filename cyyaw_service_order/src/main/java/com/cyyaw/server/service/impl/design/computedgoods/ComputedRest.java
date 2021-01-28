@@ -1,5 +1,7 @@
 package com.cyyaw.server.service.impl.design.computedgoods;
 
+import com.cyyaw.server.table.entity.ODetails;
+import com.cyyaw.server.table.entity.OOrder;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -22,4 +24,8 @@ public class ComputedRest {
     private BigDecimal total;
     // 商品列表
     private List<Sku> skuList;
+
+    private OOrder order;
+
+    private List<ODetails> detailsList;
 }

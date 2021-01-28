@@ -86,8 +86,8 @@ public class OOrder implements Serializable {
     private String description;
 
     @Basic
-    @Column(name = "number", length = 10, columnDefinition = "int COMMENT '商品总数量'")
-    private Integer number;
+    @Column(name = "number", length = 10, columnDefinition = "decimal(18,2) COMMENT '商品总数量'")
+    private BigDecimal number;
 
     @Basic
     @Column(name="amount", columnDefinition = "decimal(18,2) COMMENT '商品总价格(未加其它费用)'")
