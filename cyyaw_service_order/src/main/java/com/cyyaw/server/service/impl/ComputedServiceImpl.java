@@ -1,12 +1,9 @@
 package com.cyyaw.server.service.impl;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.cyyaw.common.res.BaseResult;
 import com.cyyaw.server.service.ComputedService;
 import com.cyyaw.server.service.GoodsService;
 import com.cyyaw.server.service.impl.design.computedgoods.ComputedRest;
-import com.cyyaw.server.service.impl.design.computedgoods.GoodsComput;
 import com.cyyaw.server.service.impl.design.computedgoods.Sku;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,29 +32,41 @@ public class ComputedServiceImpl implements ComputedService {
         }
         List<JSONObject> sku = goodsService.findSku(skusid);
         List<Sku> resSku = new ArrayList<>();
+        BigDecimal total = BigDecimal.ZERO;
+        BigDecimal computedPrice = BigDecimal.ZERO;
+        BigDecimal activePrice = BigDecimal.ZERO;
+        BigDecimal totalPrice = BigDecimal.ZERO;
         for (int i = 0; i <sku.size(); i++) {
-            JSONObject jsonObject = sku.get(i);
-            String tid = jsonObject.getString("tid");
+            JSONObject js = sku.get(i);
+            String tid = js.getString("tid");
             for (int j = 0; j < skus.size(); j++) {
                 Sku sk = skus.get(i);
                 String tid1 = sk.getTid();
                 if(tid.equals(tid1)){
-
-
-
+                    BigDecimal price = js.getBigDecimal("price"); // 单价*数量
+                    BigDecimal number = sk.getNumber(); // 数量
+                    BigDecimal tp = price.multiply(number); // 总价
+                    sk.setGoodsid(js.getString("goodsid"));
+                    sk.setNote(js.getString("note"));
+                    sk.setPhoto(js.getString("photo"));
+                    sk.setAttribute(js.getString("attribute"));
+                    sk.setTotalPrice(tp);
+                    sk.setPrice(price);
                     resSku.add(sk);
+                    //========
+                    total = total.add(number);
+                    totalPrice = totalPrice.add(tp);
+                    computedPrice = computedPrice.add(tp);
                     break;
                 }
             }
         }
-
-
         ComputedRest  computed = new ComputedRest();
         computed.setSkuList(resSku);
-        computed.setTotal(100);
-        computed.setComputedPrice(new BigDecimal("200"));
-        computed.setActivePrice(new BigDecimal("123.12"));
-        computed.setTotalPrice(new BigDecimal("23.2"));
+        computed.setTotal(total);
+        computed.setComputedPrice(computedPrice);
+        computed.setActivePrice(activePrice);
+        computed.setTotalPrice(totalPrice);
         return computed;
     }
 

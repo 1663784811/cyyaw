@@ -18,13 +18,8 @@ public class ComputedRest {
     private BigDecimal couponPrice;
     // 活动优惠
     private BigDecimal activePrice;
-
     //商品总数
-    private int total;
-
+    private BigDecimal total;
     // 商品列表
     private List<Sku> skuList;
-
-
-
 }
