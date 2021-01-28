@@ -1,11 +1,10 @@
 package com.cyyaw.server.service;
 
-import com.alibaba.fastjson.JSONObject;
-import com.cyyaw.common.res.BaseResult;
+import com.cyyaw.server.service.impl.design.computedgoods.ComputedRest;
 
 public interface ComputedService {
 
 
-    BaseResult computeGoods(JSONObject json);
+    ComputedRest computeGoods(ComputedRest computedRest);
 
 }

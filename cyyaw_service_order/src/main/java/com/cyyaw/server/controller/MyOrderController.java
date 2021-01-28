@@ -4,6 +4,7 @@ package com.cyyaw.server.controller;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.cyyaw.common.res.BaseResult;
+import com.cyyaw.server.service.impl.design.computedgoods.ComputedRest;
 import com.cyyaw.server.table.service.OOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,11 +25,10 @@ public class MyOrderController {
     public BaseResult createOrder(@RequestBody JSONObject json){
 
 
-        oOrderService.createOrder(json);
+        ComputedRest order = oOrderService.createOrder(json);
 
 
-
-        return BaseResult.ok();
+        return BaseResult.ok(order);
     }
 
     /**

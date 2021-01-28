@@ -23,7 +23,7 @@ public class ComputedRest {
     private int total;
 
     // 商品列表
-    private List<Sku> goodsList;
+    private List<Sku> skuList;
 
 
 

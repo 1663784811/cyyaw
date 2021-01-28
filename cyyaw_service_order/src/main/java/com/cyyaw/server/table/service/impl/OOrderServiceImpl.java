@@ -5,6 +5,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.cyyaw.common.res.BaseResult;
 import com.cyyaw.server.common.jpa.BaseDao;
 import com.cyyaw.server.common.jpa.BaseService;
+import com.cyyaw.server.service.ComputedService;
+import com.cyyaw.server.service.impl.design.computedgoods.ComputedRest;
 import com.cyyaw.server.table.dao.OOrderDao;
 import com.cyyaw.server.table.entity.OOrder;
 import com.cyyaw.server.table.service.OOrderService;
@@ -26,11 +28,12 @@ public class OOrderServiceImpl extends BaseService<OOrder, Integer> implements O
     @Autowired
     private OOrderDao oOrderDao;
 
+    private ComputedService computedService;
+
     @Override
     public BaseDao getBaseDao() {
         return oOrderDao;
     }
-
 
 
     @Override
@@ -56,15 +59,16 @@ public class OOrderServiceImpl extends BaseService<OOrder, Integer> implements O
     }
 
     @Override
-    public BaseResult createOrder(JSONObject json) {
+    public ComputedRest createOrder(JSONObject json) {
 
+        ComputedRest computedRest = json.toJavaObject(ComputedRest.class);
+        // 加锁
 
+        // 计算价格
+        ComputedRest computed = computedService.computeGoods(computedRest);
+        // 减少库存
 
-
-
-
-
-
+        // 生成订单号
 
 
 
