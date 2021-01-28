@@ -1,5 +1,6 @@
 package com.cyyaw.server.service.impl;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.cyyaw.common.res.BaseResult;
 import com.cyyaw.server.service.ComputedService;
@@ -21,10 +22,14 @@ public class ComputedServiceImpl implements ComputedService {
     @Override
     public BaseResult computeGoods(JSONObject json) {
 
-        GoodsComput goodsComput = new GoodsComput(goodsService);
-//        goodsComput.setGoodsList();
-        ComputedRest computed = goodsComput.computed();
+//        GoodsComput goodsComput = new GoodsComput(goodsService);
+////        goodsComput.setGoodsList();
+//        ComputedRest computed = goodsComput.computed();
 
+        JSONArray jsonArray = json.getJSONArray("goodslist");
+
+        ComputedRest  computed = new ComputedRest();
+        computed.setTotal(100);
 
 
 

@@ -6,6 +6,7 @@ import com.cyyaw.common.res.BaseResult;
 import com.cyyaw.server.service.ComputedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,8 +23,8 @@ public class ComputedController {
      * 计算商品价格
      * @return
      */
-    @PostMapping("/computeGoods")
-    public BaseResult computeGoods(JSONObject json){
+    @RequestMapping("/computeGoods")
+    public BaseResult computeGoods(@RequestBody JSONObject json){
        return computedService.computeGoods(json);
     }
 
