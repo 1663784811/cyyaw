@@ -46,4 +46,18 @@ public interface GoodsService {
             @RequestParam(value = "search") String search
     );
 
+
+    @RequestMapping(value = "/goods/brand/findPage", produces = "application/json; charset=UTF-8")
+    BaseResult findPageBrand(
+            @RequestParam(value = "page") Integer page,
+            @RequestParam(value = "size") Integer size,
+            @RequestParam(value = "search") String search
+    );
+
+    @RequestMapping(value = "/goods/type/findPage", produces = "application/json; charset=UTF-8")
+    BaseResult findPageType(
+            @RequestParam(value = "page") Integer page,
+            @RequestParam(value = "size") Integer size,
+            @RequestParam(value = "search") String search
+    );
 }

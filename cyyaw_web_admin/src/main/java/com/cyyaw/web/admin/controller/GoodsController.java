@@ -58,5 +58,21 @@ public class GoodsController {
         return goodsService.findDetailsByGoodsid(goodsid);
     }
 
+    @GetMapping("/brand/findPage")
+    public BaseResult findPageBrand(
+            @RequestParam(value = "page", defaultValue = "1") Integer page,
+            @RequestParam(value = "size", defaultValue = "30") Integer size,
+            @RequestParam(value = "search", required = false) String search
+    ) {
+        return goodsService.findPageBrand(page, size, search);
+    }
 
+    @GetMapping("/type/findPage")
+    public BaseResult findPageType(
+            @RequestParam(value = "page", defaultValue = "1") Integer page,
+            @RequestParam(value = "size", defaultValue = "30") Integer size,
+            @RequestParam(value = "search", required = false) String search
+    ) {
+        return goodsService.findPageType(page, size, search);
+    }
 }
