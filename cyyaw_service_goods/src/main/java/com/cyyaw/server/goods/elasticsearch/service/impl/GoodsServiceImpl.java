@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -67,7 +68,6 @@ public class GoodsServiceImpl implements GoodsService {
         for (int i = 0; i < all.size(); i++) {
             GGoods g = all.get(i);
             GoodsList goodsList = new GoodsList();
-            goodsList.setId(g.getId());
             goodsList.setUpdatetime(new Date());
             goodsList.setTid(g.getTid());
             goodsList.setName(g.getName());

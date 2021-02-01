@@ -37,6 +37,17 @@ public class GDepositoryGoods implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createtime;
 
+
+    @Basic
+    @Column(name = "enterpriseid", columnDefinition = "varchar(32) COMMENT '所属企业e_enterprise表ID'")
+    private String enterpriseid;
+
+
+    @Basic
+    @Column(name = "storeid", columnDefinition = "varchar(32) COMMENT '所属门店e_storeid表ID'")
+    private String storeid;
+
+
     @Basic
     @Column(name = "depositoryid", columnDefinition = "varchar(32) COMMENT '所属仓库g_depository表ID'")
     private String depositoryid;

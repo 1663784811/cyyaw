@@ -40,6 +40,14 @@ public class GGoods implements Serializable {
 
 
     @Basic
+    @Column(name = "enterpriseid", columnDefinition = "varchar(32) COMMENT '所属企业e_enterprise表ID'")
+    private String enterpriseid;
+
+    @Basic
+    @Column(name = "storeid", columnDefinition = "varchar(32) COMMENT '所属门店e_storeid表ID'")
+    private String storeid;
+
+    @Basic
     @Column(name = "name",  columnDefinition = "varchar(255) not null COMMENT '商品名称'")
     private String name;
     @Basic
