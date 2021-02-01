@@ -10,7 +10,7 @@ import java.util.List;
 @FeignClient(value = "cyyaw-service-goods")
 public interface GoodsService {
 
-    @RequestMapping(value = "/goods/findSku" ,produces = "application/json; charset=UTF-8")
+    @RequestMapping(value = "/goods/goods/findSku" ,produces = "application/json; charset=UTF-8")
     List<JSONObject> findSku(@RequestBody List<String> list);
 
 }

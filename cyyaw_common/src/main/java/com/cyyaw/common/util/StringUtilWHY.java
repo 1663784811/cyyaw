@@ -28,13 +28,20 @@ public class StringUtilWHY extends StringUtils {
     /**
      * 生成随机数
      */
-    public static String getRandomString(int length) {
+    public static String getRandomString(int length,String str) {
         StringBuffer sb = new StringBuffer();
-        int len = string.length();
+        int len = str.length();
         for (int i = 0; i < length; i++) {
-            sb.append(string.charAt(getRandom(len - 1)));
+            sb.append(str.charAt(getRandom(len - 1)));
         }
         return sb.toString();
+    }
+
+    /**
+     * 生成随机数
+     */
+    public static String getRandomString(int length) {
+        return getRandomString(length, string);
     }
 
     private static int getRandom(int count) {

@@ -28,6 +28,24 @@ public class GoodsController {
     }
 
 
+    @GetMapping("/findGoods")
+    public BaseResult findGoods(
+            @RequestParam(value = "page", defaultValue = "1") Integer page,
+            @RequestParam(value = "size", defaultValue = "30") Integer size,
+            @RequestParam(value = "search", required = false) String search
+    ) {
+        return goodsService.findGoods(page, size, search);
+    }
+
+    @GetMapping("/findShopGoods")
+    public BaseResult findShopGoods(
+            @RequestParam(value = "page", defaultValue = "1") Integer page,
+            @RequestParam(value = "size", defaultValue = "30") Integer size,
+            @RequestParam(value = "search", required = false) String search
+    ) {
+        return goodsService.findShopGoods(page, size, search);
+    }
+
 
     @GetMapping("/details/goodsInfo")
     public BaseResult goodsInfo(@RequestParam(value = "goodsid") String goodsid) {

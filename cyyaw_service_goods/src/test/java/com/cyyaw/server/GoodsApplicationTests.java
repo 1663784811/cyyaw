@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 @SpringBootTest
 public class GoodsApplicationTests {
@@ -44,43 +45,88 @@ public class GoodsApplicationTests {
      *
      */
     @Test
-    public void test003(){
+    public void test003() throws InterruptedException {
+        CountDownLatch count = new CountDownLatch(3);
+        new Thread(()->{
+            for(int j=0;j<300;j++){
+                JSONObject jsonObject = new JSONObject();
+                GGoods goods = GoodsUtils.getGoods();
+                jsonObject.put("main", goods);
+                List<GPhoto> gPhotos = new ArrayList();
+                for(int i =0;i< 5;i++){
+                    GPhoto gPhoto = GoodsUtils.getGPhoto();
+                    gPhotos.add(gPhoto);
+                }
+                jsonObject.put("photos", gPhotos);
 
-        for(int j=0;j<10;j++){
-
-
-            JSONObject jsonObject = new JSONObject();
-            GGoods goods = GoodsUtils.getGoods();
-            jsonObject.put("main", goods);
-            List<GPhoto> gPhotos = new ArrayList();
-            for(int i =0;i< 5;i++){
-                GPhoto gPhoto = GoodsUtils.getGPhoto();
-                gPhotos.add(gPhoto);
+                List<GSku> skus = new ArrayList();
+                for(int i =0;i< 5;i++){
+                    skus.add(GoodsUtils.getGSku());
+                }
+                jsonObject.put("skus", skus);
+                List<GDetails> dl = new ArrayList();
+                GDetails gDetails = new GDetails();
+                gDetails.setDetails("<p style='font-size:30px'>测试</p>");
+                dl.add(gDetails);
+                jsonObject.put("details", dl);
+                goodsService.saveGoods(jsonObject);
             }
-            jsonObject.put("photos", gPhotos);
+            count.countDown();
+        }).start();
+        new Thread(()->{
+            for(int j=0;j<300;j++){
+                JSONObject jsonObject = new JSONObject();
+                GGoods goods = GoodsUtils.getGoods();
+                jsonObject.put("main", goods);
+                List<GPhoto> gPhotos = new ArrayList();
+                for(int i =0;i< 5;i++){
+                    GPhoto gPhoto = GoodsUtils.getGPhoto();
+                    gPhotos.add(gPhoto);
+                }
+                jsonObject.put("photos", gPhotos);
 
-
-            List<GSku> skus = new ArrayList();
-            for(int i =0;i< 5;i++){
-                skus.add(GoodsUtils.getGSku());
+                List<GSku> skus = new ArrayList();
+                for(int i =0;i< 5;i++){
+                    skus.add(GoodsUtils.getGSku());
+                }
+                jsonObject.put("skus", skus);
+                List<GDetails> dl = new ArrayList();
+                GDetails gDetails = new GDetails();
+                gDetails.setDetails("<p style='font-size:30px'>测试</p>");
+                dl.add(gDetails);
+                jsonObject.put("details", dl);
+                goodsService.saveGoods(jsonObject);
             }
-            jsonObject.put("skus", skus);
+            count.countDown();
+        }).start();
+        new Thread(()->{
+            for(int j=0;j<300;j++){
+                JSONObject jsonObject = new JSONObject();
+                GGoods goods = GoodsUtils.getGoods();
+                jsonObject.put("main", goods);
+                List<GPhoto> gPhotos = new ArrayList();
+                for(int i =0;i< 5;i++){
+                    GPhoto gPhoto = GoodsUtils.getGPhoto();
+                    gPhotos.add(gPhoto);
+                }
+                jsonObject.put("photos", gPhotos);
 
-            List<GDetails> dl = new ArrayList();
-            GDetails gDetails = new GDetails();
-            gDetails.setDetails("<p style='font-size:30px'>测试</p>");
-            dl.add(gDetails);
-            jsonObject.put("details", dl);
+                List<GSku> skus = new ArrayList();
+                for(int i =0;i< 5;i++){
+                    skus.add(GoodsUtils.getGSku());
+                }
+                jsonObject.put("skus", skus);
+                List<GDetails> dl = new ArrayList();
+                GDetails gDetails = new GDetails();
+                gDetails.setDetails("<p style='font-size:30px'>测试</p>");
+                dl.add(gDetails);
+                jsonObject.put("details", dl);
+                goodsService.saveGoods(jsonObject);
+            }
+            count.countDown();
+        }).start();
 
-
-            goodsService.saveGoods(jsonObject);
-
-        }
-
-
-
-
-
+        count.await();
     }
 
 

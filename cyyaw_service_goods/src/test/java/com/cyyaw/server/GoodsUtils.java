@@ -21,7 +21,10 @@ public class GoodsUtils {
             "https://img13.360buyimg.com/n1/s200x200_jfs/t1/133756/40/1519/140962/5ed9eb6aEb6019b79/0517e745e98e2651.jpg",
             "https://img14.360buyimg.com/n1/s200x200_jfs/t1/148818/30/16311/135337/5fc449efE0eca205f/9e7fe98c3a2c3705.jpg",
             "https://img14.360buyimg.com/n7/jfs/t1/134740/26/11967/92060/5f843e70E8005bcb6/bb4d854e230a6b2c.jpg",
-            "https://img14.360buyimg.com/n7/jfs/t1/140766/38/19932/167143/5fe43196E5b09e32f/c8ed2b47eec1c6ad.jpg"
+            "https://img14.360buyimg.com/n7/jfs/t1/140766/38/19932/167143/5fe43196E5b09e32f/c8ed2b47eec1c6ad.jpg",
+            "https://img14.360buyimg.com/n0/jfs/t1/158294/24/4727/144892/600bede3E7f2747dc/8a5b58336d7e78ed.jpg",
+            "https://img14.360buyimg.com/n0/jfs/t1/136682/4/1564/166959/5eda38f6Ebc58ba10/579ac6a5fd63ec1e.jpg",
+            "https://img14.360buyimg.com/n0/jfs/t1/82215/18/9219/98477/5d70a0b5Ede188805/a014c46a4b3d11a2.jpg"
     };
     private static String names="哈登这天只有3次失误，可是最后一次失误是把球“传”给了考文顿，是不是在他的印象中，考文顿还是自己人呢？只打了一场球的哈登以44分列在得分榜第一，但在他身后，是两战平均36.5分的特雷·扬。这个赛季，美国媒体预测谁将是最终的得分王，哈登仍居第一，第二到第四分别是东切奇、布克和特雷·扬然而现在势头最猛的是特雷·扬。当哈登的肥皂剧一出接一出时，特雷·扬已经开始抢班夺权，在蝉联三届得分王后，大胡子的这一位置受到了来自东部新鹰王的挑战。每个时代，新人换旧人都是永恒不变的话题。";
 
@@ -49,7 +52,7 @@ public class GoodsUtils {
         goods.setTid(StringUtilWHY.getUUID());
         goods.setHighprice(price);
         goods.setPrice(price);
-        goods.setName("cccccccccccseddddddd");
+        goods.setName(StringUtilWHY.getRandomString(15, names));
         goods.setBrandcode("dss");
         goods.setTypecode("seefeifeifnji");
         goods.setPhoto(photos[index]);

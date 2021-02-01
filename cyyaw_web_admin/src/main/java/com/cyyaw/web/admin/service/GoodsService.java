@@ -12,22 +12,38 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface GoodsService {
 
 
-    @RequestMapping(value = "/goods/search" ,produces = "application/json; charset=UTF-8")
+    @RequestMapping(value = "/goods/goods/search", produces = "application/json; charset=UTF-8")
     BaseResult search(
             @RequestParam(value = "page") Integer page,
             @RequestParam(value = "size") Integer size,
             @RequestParam(value = "search", required = false) String search
     );
 
-    @RequestMapping(value = "/goods/details/goodsInfo" ,produces = "application/json; charset=UTF-8")
+    @RequestMapping(value = "/goods/details/goodsInfo", produces = "application/json; charset=UTF-8")
     BaseResult goodsInfo(@RequestParam(value = "goodsid") String goodsid);
 
-    @RequestMapping(value = "/goods/details/findByGoodsid" ,produces = "application/json; charset=UTF-8")
+    @RequestMapping(value = "/goods/details/findByGoodsid", produces = "application/json; charset=UTF-8")
     BaseResult findDetailsByGoodsid(@RequestParam(value = "goodsid") String goodsid);
 
-    @RequestMapping(value = "/goods/depository/findDepositoryList" ,produces = "application/json; charset=UTF-8")
-    BaseResult findDepositoryList(@RequestParam(value = "page")Integer page,@RequestParam(value = "size") Integer size);
+    @RequestMapping(value = "/goods/depository/findDepositoryList", produces = "application/json; charset=UTF-8")
+    BaseResult findDepositoryList(@RequestParam(value = "page") Integer page, @RequestParam(value = "size") Integer size);
 
-    @RequestMapping(value = "/goods/depository/saveDepository" ,produces = "application/json; charset=UTF-8")
+    @RequestMapping(value = "/goods/depository/saveDepository", produces = "application/json; charset=UTF-8")
     BaseResult saveDepository(@RequestBody JSONObject json);
+
+
+    @RequestMapping(value = "/goods/goods/findPage", produces = "application/json; charset=UTF-8")
+    BaseResult findGoods(
+            @RequestParam(value = "page") Integer page,
+            @RequestParam(value = "size") Integer size,
+            @RequestParam(value = "search") String search
+    );
+
+    @RequestMapping(value = "/goods/storegoods/findPage", produces = "application/json; charset=UTF-8")
+    BaseResult findShopGoods(
+            @RequestParam(value = "page") Integer page,
+            @RequestParam(value = "size") Integer size,
+            @RequestParam(value = "search") String search
+    );
+
 }
