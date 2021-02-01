@@ -46,9 +46,9 @@ public class GoodsApplicationTests {
      */
     @Test
     public void test003() throws InterruptedException {
-        CountDownLatch count = new CountDownLatch(3);
+        CountDownLatch count = new CountDownLatch(8);
         new Thread(()->{
-            for(int j=0;j<300;j++){
+            for(int j=0;j<30000;j++){
                 JSONObject jsonObject = new JSONObject();
                 GGoods goods = GoodsUtils.getGoods();
                 jsonObject.put("main", goods);
@@ -74,7 +74,7 @@ public class GoodsApplicationTests {
             count.countDown();
         }).start();
         new Thread(()->{
-            for(int j=0;j<300;j++){
+            for(int j=0;j<30000;j++){
                 JSONObject jsonObject = new JSONObject();
                 GGoods goods = GoodsUtils.getGoods();
                 jsonObject.put("main", goods);
@@ -100,7 +100,7 @@ public class GoodsApplicationTests {
             count.countDown();
         }).start();
         new Thread(()->{
-            for(int j=0;j<300;j++){
+            for(int j=0;j<30000;j++){
                 JSONObject jsonObject = new JSONObject();
                 GGoods goods = GoodsUtils.getGoods();
                 jsonObject.put("main", goods);
@@ -125,7 +125,136 @@ public class GoodsApplicationTests {
             }
             count.countDown();
         }).start();
+        new Thread(()->{
+            for(int j=0;j<30000;j++){
+                JSONObject jsonObject = new JSONObject();
+                GGoods goods = GoodsUtils.getGoods();
+                jsonObject.put("main", goods);
+                List<GPhoto> gPhotos = new ArrayList();
+                for(int i =0;i< 5;i++){
+                    GPhoto gPhoto = GoodsUtils.getGPhoto();
+                    gPhotos.add(gPhoto);
+                }
+                jsonObject.put("photos", gPhotos);
 
+                List<GSku> skus = new ArrayList();
+                for(int i =0;i< 5;i++){
+                    skus.add(GoodsUtils.getGSku());
+                }
+                jsonObject.put("skus", skus);
+                List<GDetails> dl = new ArrayList();
+                GDetails gDetails = new GDetails();
+                gDetails.setDetails("<p style='font-size:30px'>测试</p>");
+                dl.add(gDetails);
+                jsonObject.put("details", dl);
+                goodsService.saveGoods(jsonObject);
+            }
+            count.countDown();
+        }).start();
+        new Thread(()->{
+            for(int j=0;j<30000;j++){
+                JSONObject jsonObject = new JSONObject();
+                GGoods goods = GoodsUtils.getGoods();
+                jsonObject.put("main", goods);
+                List<GPhoto> gPhotos = new ArrayList();
+                for(int i =0;i< 5;i++){
+                    GPhoto gPhoto = GoodsUtils.getGPhoto();
+                    gPhotos.add(gPhoto);
+                }
+                jsonObject.put("photos", gPhotos);
+
+                List<GSku> skus = new ArrayList();
+                for(int i =0;i< 5;i++){
+                    skus.add(GoodsUtils.getGSku());
+                }
+                jsonObject.put("skus", skus);
+                List<GDetails> dl = new ArrayList();
+                GDetails gDetails = new GDetails();
+                gDetails.setDetails("<p style='font-size:30px'>测试</p>");
+                dl.add(gDetails);
+                jsonObject.put("details", dl);
+                goodsService.saveGoods(jsonObject);
+            }
+            count.countDown();
+        }).start();
+        new Thread(()->{
+            for(int j=0;j<30000;j++){
+                JSONObject jsonObject = new JSONObject();
+                GGoods goods = GoodsUtils.getGoods();
+                jsonObject.put("main", goods);
+                List<GPhoto> gPhotos = new ArrayList();
+                for(int i =0;i< 5;i++){
+                    GPhoto gPhoto = GoodsUtils.getGPhoto();
+                    gPhotos.add(gPhoto);
+                }
+                jsonObject.put("photos", gPhotos);
+
+                List<GSku> skus = new ArrayList();
+                for(int i =0;i< 5;i++){
+                    skus.add(GoodsUtils.getGSku());
+                }
+                jsonObject.put("skus", skus);
+                List<GDetails> dl = new ArrayList();
+                GDetails gDetails = new GDetails();
+                gDetails.setDetails("<p style='font-size:30px'>测试</p>");
+                dl.add(gDetails);
+                jsonObject.put("details", dl);
+                goodsService.saveGoods(jsonObject);
+            }
+            count.countDown();
+        }).start();
+        new Thread(()->{
+            for(int j=0;j<30000;j++){
+                JSONObject jsonObject = new JSONObject();
+                GGoods goods = GoodsUtils.getGoods();
+                jsonObject.put("main", goods);
+                List<GPhoto> gPhotos = new ArrayList();
+                for(int i =0;i< 5;i++){
+                    GPhoto gPhoto = GoodsUtils.getGPhoto();
+                    gPhotos.add(gPhoto);
+                }
+                jsonObject.put("photos", gPhotos);
+
+                List<GSku> skus = new ArrayList();
+                for(int i =0;i< 5;i++){
+                    skus.add(GoodsUtils.getGSku());
+                }
+                jsonObject.put("skus", skus);
+                List<GDetails> dl = new ArrayList();
+                GDetails gDetails = new GDetails();
+                gDetails.setDetails("<p style='font-size:30px'>测试</p>");
+                dl.add(gDetails);
+                jsonObject.put("details", dl);
+                goodsService.saveGoods(jsonObject);
+            }
+            count.countDown();
+        }).start();
+        new Thread(()->{
+            for(int j=0;j<30000;j++){
+                JSONObject jsonObject = new JSONObject();
+                GGoods goods = GoodsUtils.getGoods();
+                jsonObject.put("main", goods);
+                List<GPhoto> gPhotos = new ArrayList();
+                for(int i =0;i< 5;i++){
+                    GPhoto gPhoto = GoodsUtils.getGPhoto();
+                    gPhotos.add(gPhoto);
+                }
+                jsonObject.put("photos", gPhotos);
+
+                List<GSku> skus = new ArrayList();
+                for(int i =0;i< 5;i++){
+                    skus.add(GoodsUtils.getGSku());
+                }
+                jsonObject.put("skus", skus);
+                List<GDetails> dl = new ArrayList();
+                GDetails gDetails = new GDetails();
+                gDetails.setDetails("<p style='font-size:30px'>测试</p>");
+                dl.add(gDetails);
+                jsonObject.put("details", dl);
+                goodsService.saveGoods(jsonObject);
+            }
+            count.countDown();
+        }).start();
         count.await();
     }
 
