@@ -15,7 +15,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "g_store_goods")
-@org.hibernate.annotations.Table(appliesTo = "g_store_goods", comment = "门店商品")
+@org.hibernate.annotations.Table(appliesTo = "g_store_goods", comment = "门店销售商品")
 public class GStoreGoods implements Serializable {
 
     private static final long serialVersionUID = 156878232734233758L;

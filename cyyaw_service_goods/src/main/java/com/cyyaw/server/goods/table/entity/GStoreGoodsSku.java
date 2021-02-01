@@ -15,7 +15,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "g_store_goods_sku")
-@org.hibernate.annotations.Table(appliesTo = "g_store_goods_sku", comment = "门店商品sku信息")
+@org.hibernate.annotations.Table(appliesTo = "g_store_goods_sku", comment = "门店销售商品sku信息")
 public class GStoreGoodsSku implements Serializable {
 
     private static final long serialVersionUID = 156878266734233758L;
@@ -50,7 +50,7 @@ public class GStoreGoodsSku implements Serializable {
     private String goodsid;
 
     @Basic
-    @Column(name = "skuid", columnDefinition = "varchar(32) not null COMMENT '所属门店e_storeid表ID'")
+    @Column(name = "skuid", columnDefinition = "varchar(32) not null COMMENT '所属g_sku表ID'")
     private String skuid;
 
     @Basic
@@ -59,5 +59,9 @@ public class GStoreGoodsSku implements Serializable {
     @Basic
     @Column(name="number", columnDefinition = "int not null default '0' COMMENT '虚拟库存数量'")
     private Integer number;
+
+    @Basic
+    @Column(name = "type",  columnDefinition = "int not null COMMENT '类型{1:入库,2:出库}'")
+    private Integer type;
 
 }
