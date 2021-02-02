@@ -1,13 +1,11 @@
 package com.cyyaw.web.admin.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.cyyaw.common.res.BaseResult;
 import com.cyyaw.web.admin.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/pc/goods")
 @RestController
@@ -74,5 +72,12 @@ public class GoodsController {
             @RequestParam(value = "search", required = false) String search
     ) {
         return goodsService.findPageType(page, size, search);
+    }
+
+
+
+    @GetMapping("/type/saveType")
+    public BaseResult saveType(@RequestBody JSONObject json) {
+        return goodsService.saveType(json);
     }
 }

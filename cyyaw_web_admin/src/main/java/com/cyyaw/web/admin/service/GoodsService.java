@@ -60,4 +60,8 @@ public interface GoodsService {
             @RequestParam(value = "size") Integer size,
             @RequestParam(value = "search") String search
     );
+
+    @RequestMapping(value = "/goods/type/saveType", produces = "application/json; charset=UTF-8")
+    BaseResult saveType(@RequestBody JSONObject json);
+
 }

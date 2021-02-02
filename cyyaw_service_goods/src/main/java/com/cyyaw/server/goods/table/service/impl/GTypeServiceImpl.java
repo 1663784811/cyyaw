@@ -24,5 +24,13 @@ public class GTypeServiceImpl extends BaseService<GType, Integer> implements GTy
         return gTypeDao;
     }
 
+    @Override
+    public GType saveType(GType gType) {
+
+
+
+
+        return null;
+    }
 }
 

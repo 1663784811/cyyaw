@@ -7,5 +7,6 @@ import com.cyyaw.server.goods.table.entity.GType;
 public interface GTypeService extends BaseTableService<GType, Integer> {
 
 
+    GType saveType(GType gType);
 
 }
