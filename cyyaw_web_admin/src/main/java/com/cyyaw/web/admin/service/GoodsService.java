@@ -64,4 +64,9 @@ public interface GoodsService {
     @RequestMapping(value = "/goods/type/saveType", produces = "application/json; charset=UTF-8")
     BaseResult saveType(@RequestBody JSONObject json);
 
+
+    @RequestMapping(value = "/goods/brand/saveBrand", produces = "application/json; charset=UTF-8")
+    BaseResult saveBrand(@RequestBody JSONObject json);
+
+
 }

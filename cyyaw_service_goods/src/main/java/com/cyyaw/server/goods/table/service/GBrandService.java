@@ -7,5 +7,5 @@ import com.cyyaw.server.goods.table.entity.GBrand;
 public interface GBrandService extends BaseTableService<GBrand, Integer> {
 
 
-
+    GBrand saveBrand(GBrand gBrand);
 }

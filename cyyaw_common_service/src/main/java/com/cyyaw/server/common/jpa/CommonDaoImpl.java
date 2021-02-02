@@ -74,10 +74,8 @@ public class CommonDaoImpl implements CommonDao {
     }
 
     @Override
-    public Map<String, Object> update(JSONObject json) {
+    public JSONArray update(String table, JSONArray data) {
         // 第一步: 查询表结构
-        String table = json.getString("table");
-        JSONArray data = json.getJSONArray("data");
         JSONArray reArr = new JSONArray();
         if (null != data && data.size() > 0) {
             JSONArray page = tableInfo(table);
@@ -125,52 +123,54 @@ public class CommonDaoImpl implements CommonDao {
                             cn = "0";
                         }
                         if (
-                            (!"datetime".equals(dataType) && null != cn)
-                            ||  "treecode".equals(name)
-                            || (!StringUtilWHY.isEmpty(cn) )
+                                (!"datetime".equals(dataType) && null != cn)
+                                        || "treecode".equals(name)
+                                        || (!StringUtilWHY.isEmpty(cn))
                         ) {
                             if (datakey.length() > 0) {
                                 datakey.append(",`" + name + "`");
                             } else {
-                                datakey.append("`"+name + "`");
+                                datakey.append("`" + name + "`");
                             }
                             if (set.length() > 0) {
                                 set.append(",?");
                             } else {
                                 set.append("?");
                             }
-                            if("pid".equals(name) || "tid".equals(name) || "treecode".equals(name)){tree++;}
-                            if("treecode".equals(name)){
+                            if ("pid".equals(name) || "tid".equals(name) || "treecode".equals(name)) {
+                                tree++;
+                            }
+                            if ("treecode".equals(name)) {
                                 index = list.size();
                             }
                             list.add(cn);
                         }
                     }
-                    if(tree==3 && index != -1){
+                    if (tree == 3 && index != -1) {
                         String pid = obj.getString("pid");
-                        if(null != pid){
+                        if (null != pid) {
                             String parentTreeCode = "";
                             // 第二步： 查找新的父节点数据
-                            List<Map<String, Object>> parentData = jdbcTemplate.queryForList("select * from "+ table + " where `tid` = ?", pid);
-                            if(parentData.size()>0){
+                            List<Map<String, Object>> parentData = jdbcTemplate.queryForList("select * from " + table + " where `tid` = ?", pid);
+                            if (parentData.size() > 0) {
                                 Map<String, Object> parentObj = parentData.get(0);
                                 parentTreeCode = parentObj.get("treecode").toString();
                             }
                             //获取新的 treecode
                             int l = parentTreeCode.length() + 3;
-                            String max = "select ifnull(max(t.treecode),0)+1 as treecode from "+table+" t where length(t.treecode) = ? and t.treecode LIKE ? ";
-                            List<Map<String,Object>> setcode = jdbcTemplate.queryForList(max, l, parentTreeCode + "%");
+                            String max = "select ifnull(max(t.treecode),0)+1 as treecode from " + table + " t where length(t.treecode) = ? and t.treecode LIKE ? ";
+                            List<Map<String, Object>> setcode = jdbcTemplate.queryForList(max, l, parentTreeCode + "%");
                             int trint = 1;
-                            if(setcode.size()>0){
+                            if (setcode.size() > 0) {
                                 JSONObject js = JSONObject.parseObject(JSONObject.toJSONString(setcode.get(0)));
                                 trint = js.getInteger("treecode");
                             }
                             String tr = StringUtilWHY.createStrLength(trint + "", 3, "0");
-                            obj.put("treecode", parentTreeCode+tr);
-                            list.set(index, parentTreeCode+tr);
+                            obj.put("treecode", parentTreeCode + tr);
+                            list.set(index, parentTreeCode + tr);
                         }
                     }
-                    String sqlinsert = "insert into " + table + "("+ datakey.toString() + ") values ("+ set.toString() +")";
+                    String sqlinsert = "insert into " + table + "(" + datakey.toString() + ") values (" + set.toString() + ")";
                     jdbcTemplate.update(sqlinsert, list.toArray());
                 }
             }
@@ -191,16 +191,18 @@ public class CommonDaoImpl implements CommonDao {
                             String dataType = js.getString("data_type");
                             String columnKey = js.getString("column_key");
                             String cn = obj.getString(name);
-                            if ((!"datetime".equals(dataType) && null != cn) || (!StringUtilWHY.isEmpty(cn) )) {
+                            if ((!"datetime".equals(dataType) && null != cn) || (!StringUtilWHY.isEmpty(cn))) {
                                 if (columnKey.equals("PRI")) {
                                     pkvalue = cn;
                                 } else {
                                     if (set.length() > 0) {
                                         set.append(",`" + name + "` = ? ");
                                     } else {
-                                        set.append("`"+name + "` = ? ");
+                                        set.append("`" + name + "` = ? ");
                                     }
-                                    if("pid".equals(name) || "tid".equals(name) || "treecode".equals(name)){tree++;}
+                                    if ("pid".equals(name) || "tid".equals(name) || "treecode".equals(name)) {
+                                        tree++;
+                                    }
                                     list.add(cn);
                                 }
                             }
@@ -212,41 +214,41 @@ public class CommonDaoImpl implements CommonDao {
                             // 处理树
                             String oldTreecode = null;
                             String pid = obj.getString("pid");
-                            if(tree==3){
+                            if (tree == 3) {
                                 // 第一步：查询原数据
-                                String sql =  "select * from "+ table + " where `"+pk+"` = ?";
+                                String sql = "select * from " + table + " where `" + pk + "` = ?";
                                 List<Map<String, Object>> oldData = jdbcTemplate.queryForList(sql, pkvalue);
                                 Map<String, Object> old = oldData.get(0);
                                 String oldPid = old.get("pid").toString();
                                 // 判断是否修改了父节点
-                                if(!pid.equals(oldPid)){
-                                    oldTreecode =old.get("treecode").toString();
+                                if (!pid.equals(oldPid)) {
+                                    oldTreecode = old.get("treecode").toString();
                                     String parentTreeCode = "";
                                     // 第二步： 查找新的父节点数据
-                                    List<Map<String, Object>> parentData = jdbcTemplate.queryForList("select * from "+ table + " where `tid` = ?", pid);
-                                    if(parentData.size()>0){
+                                    List<Map<String, Object>> parentData = jdbcTemplate.queryForList("select * from " + table + " where `tid` = ?", pid);
+                                    if (parentData.size() > 0) {
                                         Map<String, Object> parentObj = parentData.get(0);
                                         parentTreeCode = parentObj.get("treecode").toString();
                                     }
                                     //获取新的 treecode
                                     int l = parentTreeCode.length() + 3;
-                                    String max = "select ifnull(max(t.treecode),0)+1 as treecode from "+table+" t where length(t.treecode) = ? and t.treecode LIKE ? ";
-                                    List<Map<String,Object>> setcode = jdbcTemplate.queryForList(max, l, parentTreeCode + "%");
+                                    String max = "select ifnull(max(t.treecode),0)+1 as treecode from " + table + " t where length(t.treecode) = ? and t.treecode LIKE ? ";
+                                    List<Map<String, Object>> setcode = jdbcTemplate.queryForList(max, l, parentTreeCode + "%");
                                     int trint = 1;
-                                    if(setcode.size()>0){
+                                    if (setcode.size() > 0) {
                                         JSONObject js = JSONObject.parseObject(JSONObject.toJSONString(setcode.get(0)));
                                         trint = js.getInteger("treecode");
                                     }
                                     String tr = StringUtilWHY.createStrLength(trint + "", 3, "0");
-                                    obj.put("treecode", parentTreeCode+tr);
+                                    obj.put("treecode", parentTreeCode + tr);
                                 }
                             }
                             jdbcTemplate.update(sb.toString(), list.toArray());
-                            if(oldTreecode != null){
+                            if (oldTreecode != null) {
                                 // 更新数据下的 treecode
                                 String tr = obj.getString("treecode");
                                 String updateTree = "update t_power t set t.treecode = concat( ? ,substring(t.treecode, ? )) where t.treecode like ? ";
-                                jdbcTemplate.update(updateTree,tr, oldTreecode.length()+1, oldTreecode+"%");
+                                jdbcTemplate.update(updateTree, tr, oldTreecode.length() + 1, oldTreecode + "%");
                             }
                         }
                     }
@@ -255,11 +257,7 @@ public class CommonDaoImpl implements CommonDao {
             reArr.addAll(addArr);
             reArr.addAll(updateArr);
         }
-        HashMap<String, Object> map = new HashMap<>();
-        map.put("code", 0);
-        map.put("msg", "ok");
-        map.put("data", reArr);
-        return map;
+        return reArr;
     }
 
     @Override
@@ -292,10 +290,10 @@ public class CommonDaoImpl implements CommonDao {
             // 删除
             if (delArr.size() > 0) {
                 List slist = new ArrayList<>();
-                for(int i=0; i<delArr.size(); i++){
+                for (int i = 0; i < delArr.size(); i++) {
                     slist.add(delArr.getJSONObject(i).getString(pk));
                 }
-                String sql = "delete FROM "+table + " where " + pk+" in ("+ StringUtilWHY.createStr(slist.size(),"?",",")+")";
+                String sql = "delete FROM " + table + " where " + pk + " in (" + StringUtilWHY.createStr(slist.size(), "?", ",") + ")";
                 jdbcTemplate.update(sql, slist.toArray());
             }
         }

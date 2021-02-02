@@ -43,6 +43,16 @@ public class GTypeController {
         return BaseResult.ok(content, new BaseResult.Result(page, size, total));
     }
 
+
+    /**
+     * 添加或修改
+     */
+    @RequestMapping(value = "/saveType")
+    public BaseResult saveType(@RequestBody GType gType) {
+        GType type = gTypeService.saveType(gType);
+        return BaseResult.ok(type);
+    }
+
 //    /**
 //     * 根据ID查询
 //     */
@@ -53,14 +63,7 @@ public class GTypeController {
 //    }
 //
 //
-    /**
-     * 添加或修改
-     */
-    @RequestMapping(value = "/saveType")
-    public void saveType(@RequestBody GType gType) {
-        gTypeService.saveType(gType);
 
-    }
 //
 //    /**
 //     * 删除

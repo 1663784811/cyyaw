@@ -1,5 +1,6 @@
 package com.cyyaw.server.common.jpa;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import java.util.Map;
@@ -16,11 +17,8 @@ public interface CommonDao {
 
     /**
      * 通用更新
-     *
-     * @param json
-     * @return
      */
-    Map<String, Object> update(JSONObject json);
+    JSONArray update(String table, JSONArray data);
 
     /**
      * 通用删除

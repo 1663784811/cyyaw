@@ -80,4 +80,9 @@ public class GoodsController {
     public BaseResult saveType(@RequestBody JSONObject json) {
         return goodsService.saveType(json);
     }
+
+    @GetMapping("/brand/saveBrand")
+    public BaseResult saveBrand(@RequestBody JSONObject json) {
+        return goodsService.saveBrand(json);
+    }
 }
