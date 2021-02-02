@@ -18,7 +18,7 @@ public interface CommonDao {
     /**
      * 通用更新
      */
-    JSONArray update(String table, JSONArray data);
+    JSONArray update(String database, String table, JSONArray data);
 
     /**
      * 通用删除
@@ -26,5 +26,5 @@ public interface CommonDao {
      * @param json
      * @return
      */
-    Map<String, Object> delete(JSONObject json);
+    Map<String, Object> delete(String database,JSONObject json);
 }

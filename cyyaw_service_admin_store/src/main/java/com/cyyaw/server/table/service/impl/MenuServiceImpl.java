@@ -61,6 +61,7 @@ public class MenuServiceImpl implements MenuService {
         }
         EPower ep = menuDao.save(ePower);
         String newtreecode = ep.getTreecode();
+        // 更新子节点
         if(null != oldTreecode && !oldTreecode.equals(newtreecode)){
             updateNextNode(oldTreecode,newtreecode);
         }

@@ -33,7 +33,7 @@ public class GBrandServiceImpl extends BaseService<GBrand, Integer> implements G
     public GBrand saveBrand(GBrand gBrand) {
         JSONArray list = new JSONArray();
         list.add(gBrand);
-        JSONArray objs = commonDao.update("g_brand", list);
+        JSONArray objs = commonDao.update("cyyaw_goods", "g_brand", list);
         return objs.getObject(0, GBrand.class);
     }
 }

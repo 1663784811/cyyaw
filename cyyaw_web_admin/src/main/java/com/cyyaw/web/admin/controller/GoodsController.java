@@ -76,12 +76,12 @@ public class GoodsController {
 
 
 
-    @GetMapping("/type/saveType")
+    @PostMapping("/type/saveType")
     public BaseResult saveType(@RequestBody JSONObject json) {
         return goodsService.saveType(json);
     }
 
-    @GetMapping("/brand/saveBrand")
+    @PostMapping("/brand/saveBrand")
     public BaseResult saveBrand(@RequestBody JSONObject json) {
         return goodsService.saveBrand(json);
     }

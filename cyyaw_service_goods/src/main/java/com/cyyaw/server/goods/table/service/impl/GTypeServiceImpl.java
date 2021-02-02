@@ -36,7 +36,7 @@ public class GTypeServiceImpl extends BaseService<GType, Integer> implements GTy
     public GType saveType(GType gType) {
         JSONArray list = new JSONArray();
         list.add(gType);
-        JSONArray objs = commonDao.update("g_type", list);
+        JSONArray objs = commonDao.update("cyyaw_goods","g_type", list);
         return objs.getObject(0, GType.class);
     }
 }
