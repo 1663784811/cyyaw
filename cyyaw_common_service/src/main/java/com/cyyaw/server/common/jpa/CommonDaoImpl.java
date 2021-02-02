@@ -278,7 +278,7 @@ public class CommonDaoImpl implements CommonDao {
                     list.add(pkvalue);
                     jdbcTemplate.update(sb.toString(), list.toArray());
                     //更新子节点
-                    if (null != oldtreecode && !oldtreecode.equals(newtreecode)) {
+                    if (null != oldtreecode && newtreecode != null && !oldtreecode.equals(newtreecode)) {
                         updateNextNode(table, pk, oldtreecode, newtreecode);
                     }
                 }
@@ -383,7 +383,7 @@ public class CommonDaoImpl implements CommonDao {
                 String treecode = json.getString("treecode");
                 String pkval = json.getString(pk);
                 String replace = treecode.replace(oldTreecode, newtreecode);
-                String sql = "update `" + table + "` set treecode = ? where `"+pk+"`= ?";
+                String sql = "update `" + table + "` set treecode = ? where `" + pk + "`= ?";
                 jdbcTemplate.update(sql, replace, pkval);
             }
         }

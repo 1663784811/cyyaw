@@ -3,15 +3,18 @@ package com.cyyaw.server;
 import com.alibaba.fastjson.JSONObject;
 import com.cyyaw.common.util.BigDecimalUtilsWHY;
 import com.cyyaw.common.util.StringUtilWHY;
+import com.cyyaw.common.util.WhyNumberUtils;
 import com.cyyaw.server.goods.table.entity.GGoods;
 import com.cyyaw.server.goods.table.entity.GPhoto;
 import com.cyyaw.server.goods.table.entity.GSku;
+import org.apache.lucene.index.OneMergeWrappingMergePolicy;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GoodsUtils {
 
@@ -30,13 +33,16 @@ public class GoodsUtils {
 
     private static Map<String,String[]> attr = new HashMap<>();
 
+
     static {
-        String[] color = {"蓝色","黑色","白色","烟紫(素皮)"};
+        String[] color = {"蓝色", "黑色", "白色", "烟紫(素皮)"};
         attr.put("选择颜色", color);
-        String[] c = {"全网通 8GB+128GB","全网通 12GB+256GB","全网通 8GB+256GB"};
+        String[] c = {"全网通 8GB+128GB", "全网通 12GB+256GB", "全网通 8GB+256GB"};
         attr.put("选择版本", c);
-        String[] cd = {"大","中","小"};
+        String[] cd = {"大", "中", "小"};
         attr.put("大小", cd);
+
+
     }
 
 
@@ -52,10 +58,16 @@ public class GoodsUtils {
         goods.setTid(StringUtilWHY.getUUID());
         goods.setHighprice(price);
         goods.setPrice(price);
-        goods.setName(StringUtilWHY.getRandomString(15, names));
+        Integer randomInt = WhyNumberUtils.createRandomInt(10, 40);
+        goods.setName(StringUtilWHY.getRandomString(randomInt, names));
+
+
         goods.setBrandcode("dss");
+
         goods.setTypecode("seefeifeifnji");
+
         goods.setPhoto(photos[index]);
+
         return goods;
     }
 
