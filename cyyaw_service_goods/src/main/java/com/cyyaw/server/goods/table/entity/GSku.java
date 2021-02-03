@@ -12,7 +12,7 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "g_sku")
+@Table(name = "g_sku" ,indexes = {@Index(columnList = "goodsid")})
 @org.hibernate.annotations.Table(appliesTo = "g_sku", comment = "商品sku表")
 public class GSku implements Serializable {
     private static final long serialVersionUID = 15127826273933758L;

@@ -18,7 +18,7 @@ public interface GoodsService {
 
     List<GGoods> importElasticSearch();
 
-    JSONObject goodsInfo(String goodsid);
+    JSONObject goodsInfo(String tid);
 
     JSONObject saveGoods(JSONObject json);
 

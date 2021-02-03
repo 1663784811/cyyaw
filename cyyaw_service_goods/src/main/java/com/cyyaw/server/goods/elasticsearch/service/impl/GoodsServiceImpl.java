@@ -154,7 +154,9 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public JSONObject goodsInfo(String goodsid) {
+    public JSONObject goodsInfo(String tid) {
+        GSku skugoods = gSkuDao.findByTid(tid);
+        String goodsid = skugoods.getGoodsid();
         GGoods goods = gGoodsDao.findByTid(goodsid);
         JSONObject json = JSONObject.parseObject(JSONObject.toJSONString(goods));
         List<GPhoto> photos = gPhotoDao.findByGoodsid(goodsid);

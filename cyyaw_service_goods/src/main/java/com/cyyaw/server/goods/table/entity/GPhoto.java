@@ -11,7 +11,7 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "g_photo")
+@Table(name = "g_photo", indexes = {@Index(columnList = "goodsid")})
 @org.hibernate.annotations.Table(appliesTo = "g_photo", comment = "商品图片表")
 public class GPhoto implements Serializable {
     private static final long serialVersionUID = 15687826623933758L;

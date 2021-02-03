@@ -20,4 +20,7 @@ public interface GSkuDao extends BaseDao<GSku, Integer> {
 
     @Query("select m from GSku m where m.goodsid in(:goodsid)")
     List<GSku> findByGoodsidIn(@Param("goodsid") List<String> list);
+
+    @Query("select m from GSku m where m.tid =?1")
+    GSku findByTid(String tid);
 }
