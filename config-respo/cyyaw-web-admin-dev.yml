@@ -12,7 +12,3 @@ eureka:
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:9090/eureka/
 
-
-feign:
-  hystrix:
-    enabled: true
