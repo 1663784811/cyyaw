@@ -3,12 +3,13 @@ package com.cyyaw.web.admin.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cyyaw.common.res.BaseResult;
+import com.cyyaw.web.admin.service.fallback.GoodsServiceFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(value = "cyyaw-service-goods")
+@FeignClient(value = "cyyaw-service-goods", fallback = GoodsServiceFallback.class)
 public interface GoodsService {
 
 
