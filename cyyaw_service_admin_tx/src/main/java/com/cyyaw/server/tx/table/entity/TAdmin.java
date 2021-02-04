@@ -21,7 +21,7 @@ public class TAdmin implements Serializable {
     @Column(name = "id", unique = true, nullable = false, columnDefinition = "int auto_increment COMMENT 'id'")
     private Integer id;
     @Basic
-    @Column(name = "account", length = 32, nullable = true, columnDefinition = "varchar(32) COMMENT '账号'")
+    @Column(name = "account", length = 32, unique = true, nullable = true, columnDefinition = "varchar(32) COMMENT '账号'")
     private String account;
     @Basic
     @Column(name = "canlogintime", length = 19, nullable = true, columnDefinition = "datetime COMMENT '可登录时间'")
