@@ -14,4 +14,9 @@ public interface MenuService {
      * @return
      */
     List<TPower> getMenuList(Integer page, Integer size);
+
+
+    TPower save(TPower power);
+
+    void delMenu(TPower power);
 }

@@ -4,10 +4,7 @@ import com.cyyaw.common.res.BaseResult;
 import com.cyyaw.server.tx.table.service.MenuService;
 import com.cyyaw.server.tx.table.entity.TPower;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,4 +41,23 @@ public class MenuController {
         return BaseResult.ok(list);
     }
 
+
+    /**
+     * 更新菜单
+     */
+    @PostMapping("/updateMenu")
+    public BaseResult updateMenu(@RequestBody TPower power){
+        TPower e = menuService.save(power);
+        return BaseResult.ok(e);
+    }
+
+
+    /**
+     * 删除菜单
+     */
+    @PostMapping("/delMenu")
+    public BaseResult delMenu(@RequestBody TPower power){
+        menuService.delMenu(power);
+        return BaseResult.ok();
+    }
 }

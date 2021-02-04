@@ -30,4 +30,28 @@ public class MenuServiceImpl implements MenuService {
         return menuDao.getMenuList(pageable);
     }
 
+
+    @Override
+    public TPower save(TPower power) {
+
+
+
+
+
+
+        return null;
+    }
+
+    @Override
+    public void delMenu(TPower power) {
+
+
+
+
+
+
+
+
+    }
+
 }

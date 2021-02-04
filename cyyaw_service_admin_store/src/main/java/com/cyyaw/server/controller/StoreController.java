@@ -47,7 +47,7 @@ public class StoreController {
 
 
     /**
-     * 更新菜单
+     * 删除菜单
      */
     @PostMapping("/delMenu")
     public BaseResult delMenu(@RequestBody EPower ePower){
