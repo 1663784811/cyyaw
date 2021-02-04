@@ -57,7 +57,7 @@ public class TAdmin implements Serializable {
     @Column(name = "note", nullable = true, columnDefinition = "varchar(255) COMMENT '备注'")
     private String note;
     @Basic
-    @Column(name = "password", length = 32, nullable = true, columnDefinition = "varchar(32) COMMENT '密码'")
+    @Column(name = "password", length = 64, nullable = true, columnDefinition = "varchar(64) COMMENT '密码'")
     private String password;
     @Basic
     @Column(name = "phone", length = 15, nullable = true, columnDefinition = "varchar(15) COMMENT '手机号'")
