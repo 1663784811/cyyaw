@@ -28,7 +28,7 @@ public class EEnterpriseServiceImpl extends BaseService<EEnterprise, Integer> im
     public EEnterprise saveEnterprise(EEnterprise eEnterprise) {
         String tid = eEnterprise.getTid();
         if(StringUtilWHY.isEmpty(tid)){
-            eEnterprise.setTid(tid);
+            eEnterprise.setTid(StringUtilWHY.getUUID());
         }
         return eEnterpriseDao.save(eEnterprise);
     }

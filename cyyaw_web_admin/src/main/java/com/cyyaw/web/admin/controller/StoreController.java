@@ -1,5 +1,6 @@
 package com.cyyaw.web.admin.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.cyyaw.common.res.BaseResult;
 import com.cyyaw.web.admin.service.StoreService;
@@ -49,5 +50,23 @@ public class StoreController {
     @PostMapping("/enterprise/saveEEnterprise")
     public BaseResult saveEEnterprise(@RequestBody JSONObject json) {
         return storeService.saveEEnterprise(json);
+    }
+
+    @PostMapping("/enterprise/delEEnterprise")
+    public BaseResult delEEnterprise(@RequestBody JSONArray arr) {
+        return storeService.delEEnterprise(arr);
+    }
+
+    @GetMapping("/store/findPage")
+    public BaseResult findPageStore(
+            @RequestParam(value = "page", defaultValue = "1") Integer page,
+            @RequestParam(value = "size", defaultValue = "30") Integer size
+    ) {
+        return storeService.findPageStore(page, size);
+    }
+
+    @PostMapping("/store/saveStore")
+    public BaseResult saveStore(@RequestBody JSONObject json) {
+        return storeService.saveStore(json);
     }
 }

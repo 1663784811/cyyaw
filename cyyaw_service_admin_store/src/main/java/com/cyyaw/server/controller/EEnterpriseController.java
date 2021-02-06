@@ -46,4 +46,15 @@ public class EEnterpriseController {
         return BaseResult.ok(enterprise);
     }
 
+
+    @PostMapping(value = "/delEEnterprise")
+    public BaseResult delEEnterprise(@RequestBody List<EEnterprise> list) {
+        Integer[] integers = new Integer[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            integers[i] =  list.get(i).getId();
+        }
+        eEnterpriseService.del(integers);
+        return BaseResult.ok();
+    }
+
 }

@@ -1,57 +1,52 @@
 package com.cyyaw.server.controller;
 
-
+import com.cyyaw.common.entity.SelectEntity;
 import com.cyyaw.common.res.BaseResult;
-import com.cyyaw.server.table.service.MenuService;
-import com.cyyaw.server.table.entity.EPower;
+import com.cyyaw.common.util.StringUtilWHY;
+import com.cyyaw.server.common.jpa.JpaUtils;
+import com.cyyaw.server.table.entity.EStore;
+import com.cyyaw.server.table.service.EStoreService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/store/admin/menu")
+@Slf4j
+@RequestMapping("/store/admin/store")
 @RestController
 public class StoreController {
+
     @Autowired
-    private MenuService menuService;
+    private EStoreService eStoreService;
 
     /**
-     * 获取菜单列表
+     * 分页条件查询
      */
-    @GetMapping("/getMenuList")
-    public BaseResult getMenuList(){
-        List<EPower> list = menuService.getMenuList();
-        return BaseResult.ok(list);
+    @GetMapping(value = "/findPage")
+    public BaseResult findPage(String jsonStr, SelectEntity selectEntity) {
+        PageRequest pageRequest = JpaUtils.getPageRequest(selectEntity);
+        Page<EStore> data = eStoreService.findPage(jsonStr, pageRequest);
+        List<EStore> content = data.getContent();
+        long total = data.getTotalElements();
+        int page = pageRequest.getPageNumber() + 1;
+        int size = pageRequest.getPageSize();
+        return BaseResult.ok(content, new BaseResult.Result(page, size, total));
     }
 
     /**
-     * 获取菜单列表
+     * 添加或修改
      */
-    @GetMapping("/getAdminMenu")
-    public BaseResult getAdminMenu(
-            @RequestParam(value = "admintid", required = false) String admintid
-    ){
-        List<EPower> list = menuService.getAdminMenu(admintid);
-        return BaseResult.ok(list);
+    @PostMapping(value = "/saveStore")
+    public BaseResult saveStore(@RequestBody EStore eStore) {
+        String tid = eStore.getTid();
+        if (StringUtilWHY.isEmpty(tid)) {
+            eStore.setTid(StringUtilWHY.getUUID());
+        }
+        EStore store = eStoreService.save(eStore);
+        return BaseResult.ok(store);
     }
 
-
-    /**
-     * 更新菜单
-     */
-    @PostMapping("/updateMenu")
-    public BaseResult updateMenu(@RequestBody EPower ePower){
-        EPower e = menuService.save(ePower);
-        return BaseResult.ok(e);
-    }
-
-
-    /**
-     * 删除菜单
-     */
-    @PostMapping("/delMenu")
-    public BaseResult delMenu(@RequestBody EPower ePower){
-        menuService.delMenu(ePower);
-        return BaseResult.ok();
-    }
 }
