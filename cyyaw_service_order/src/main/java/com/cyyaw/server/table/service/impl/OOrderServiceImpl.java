@@ -72,8 +72,8 @@ public class OOrderServiceImpl extends BaseService<OOrder, Integer> implements O
             List<ODetails> details = new ArrayList<>();
             for (int j = 0; j < oDetailsList.size(); j++) {
                 ODetails oDetails = oDetailsList.get(j);
-                String goodsid = oDetails.getGoodsid();
-                if (null != goodsid && goodsid.equals(tid)) {
+                String orderid = oDetails.getOrderid();
+                if (null != orderid && orderid.equals(tid)) {
                     details.add(oDetails);
                 }
             }

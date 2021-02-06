@@ -18,11 +18,12 @@ public class MyOrderController {
 
     /**
      * 生成订单
+     *
      * @param json
      * @return
      */
     @PostMapping("/createOrder")
-    public BaseResult createOrder(@RequestBody JSONObject json){
+    public BaseResult createOrder(@RequestBody JSONObject json) {
 
 
         ComputedRest order = oOrderService.createOrder(json);
@@ -31,24 +32,25 @@ public class MyOrderController {
 
     /**
      * 获取我的订单列表
+     *
      * @param page
      * @param size
      * @return
      */
-    @GetMapping("/myOrderList")
+    @RequestMapping("/myOrderList")
     public BaseResult myOrderList(
-            @RequestParam(value = "userid", required = false) String userid,
-            @RequestParam(value = "search") String search,
+            @RequestParam(value = "userid") String userid,
+            @RequestParam(value = "search", required = false) String search,
             @RequestParam(value = "page", defaultValue = "1") Integer page,
             @RequestParam(value = "size", defaultValue = "30") Integer size
-    ){
+    ) {
         return oOrderService.findByUserid(userid, search, page, size);
     }
 
 
-
     /**
      * 获取我的订单列表
+     *
      * @param page
      * @param size
      * @return
@@ -57,7 +59,7 @@ public class MyOrderController {
     public BaseResult findOrderList(
             @RequestParam(value = "page", defaultValue = "1") Integer page,
             @RequestParam(value = "size", defaultValue = "30") Integer size
-    ){
+    ) {
         return oOrderService.findOrderList(page, size);
     }
 
