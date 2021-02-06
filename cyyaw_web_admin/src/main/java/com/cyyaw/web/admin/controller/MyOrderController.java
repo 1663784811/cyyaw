@@ -15,10 +15,6 @@ public class MyOrderController {
     private MyOrderService myOrderServicel;
 
 
-    @RequestMapping("/orderList")
-    public BaseResult orderList(){
-       return  myOrderServicel.orderList();
-    }
 
     @RequestMapping("/findOrderList")
     public BaseResult findOrderList(

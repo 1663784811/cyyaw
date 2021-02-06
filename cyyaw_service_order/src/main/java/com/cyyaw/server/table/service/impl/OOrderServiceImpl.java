@@ -16,6 +16,7 @@ import com.cyyaw.server.table.entity.OOrder;
 import com.cyyaw.server.table.service.OOrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -25,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -33,6 +35,7 @@ public class OOrderServiceImpl extends BaseService<OOrder, Integer> implements O
 
     @Autowired
     private OOrderDao oOrderDao;
+
 
     @Autowired
     private ComputedService computedService;
@@ -48,25 +51,47 @@ public class OOrderServiceImpl extends BaseService<OOrder, Integer> implements O
 
 
     @Override
-    public JSONArray findByUserid(String uid, Integer page, Integer size) {
+    public BaseResult findByUserid(String uid, String search, Integer page, Integer size) {
+        // 查订单
+        OOrder order = new OOrder();
+        order.setUserid(uid);
+        Example<OOrder> of = Example.of(order);
+        Page<OOrder> all = oOrderDao.findAll(of, PageRequest.of(page - 1, size));
+        List<OOrder> list = all.getContent();
+        List<String> orderNo = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            OOrder oOrder = list.get(i);
+            orderNo.add(oOrder.getTid());
+        }
+        List<ODetails> oDetailsList = oDetailsDao.findByOrderids(orderNo);
+        // 查订单详情
         JSONArray arr = new JSONArray();
-        JSONObject json = new JSONObject();
-        json.put("aaa", "cccc");
-        json.put("aaa1", "cccc");
-        json.put("aaa2", "cccc");
-        json.put("aaa3", "cccc");
-        json.put("aaa4", "cccc");
-        arr.add(json);
-        return arr;
+        for (int i = 0; i < list.size(); i++) {
+            JSONObject json = JSONObject.parseObject(JSONObject.toJSON(list.get(i)).toString());
+            String tid = json.getString("tid");
+            List<ODetails> details = new ArrayList<>();
+            for (int j = 0; j < oDetailsList.size(); j++) {
+                ODetails oDetails = oDetailsList.get(j);
+                String goodsid = oDetails.getGoodsid();
+                if (null != goodsid && goodsid.equals(tid)) {
+                    details.add(oDetails);
+                }
+            }
+            json.put("odetails", details);
+            arr.add(json);
+        }
+
+        long total = all.getTotalElements();
+        return BaseResult.ok(arr, new BaseResult.Result(page, size, total));
     }
 
     @Override
     public BaseResult findOrderList(Integer page, Integer size) {
-        Pageable pageable = PageRequest.of(page-1, size);
+        Pageable pageable = PageRequest.of(page - 1, size);
         Page<OOrder> all = oOrderDao.findAll(pageable);
         List<OOrder> content = all.getContent();
         long total = all.getTotalElements();
-        return BaseResult.ok(content, new BaseResult.Result(page,size, total));
+        return BaseResult.ok(content, new BaseResult.Result(page, size, total));
     }
 
     @Override
@@ -119,7 +144,7 @@ public class OOrderServiceImpl extends BaseService<OOrder, Integer> implements O
         OOrder order = oOrderDao.save(oOrder);
         // 生成订单详情
         List<ODetails> oDetailsList = new ArrayList<>();
-        for (int i = 0; i <skuList.size(); i++) {
+        for (int i = 0; i < skuList.size(); i++) {
             Sku sku = skuList.get(i);
             ODetails oDetails = new ODetails();
             oDetails.setTid(StringUtilWHY.getUUID());

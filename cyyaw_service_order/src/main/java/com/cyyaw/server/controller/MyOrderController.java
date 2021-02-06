@@ -23,25 +23,26 @@ public class MyOrderController {
      */
     @PostMapping("/createOrder")
     public BaseResult createOrder(@RequestBody JSONObject json){
+
+
         ComputedRest order = oOrderService.createOrder(json);
         return BaseResult.ok(order);
     }
 
     /**
      * 获取我的订单列表
-     * @param uid
      * @param page
      * @param size
      * @return
      */
     @GetMapping("/myOrderList")
     public BaseResult myOrderList(
-            @RequestParam(value = "uid", required = false) String uid,
+            @RequestParam(value = "userid", required = false) String userid,
+            @RequestParam(value = "search") String search,
             @RequestParam(value = "page", defaultValue = "1") Integer page,
             @RequestParam(value = "size", defaultValue = "30") Integer size
     ){
-        JSONArray order = oOrderService.findByUserid(uid, page, size);
-        return BaseResult.ok(order);
+        return oOrderService.findByUserid(userid, search, page, size);
     }
 
 

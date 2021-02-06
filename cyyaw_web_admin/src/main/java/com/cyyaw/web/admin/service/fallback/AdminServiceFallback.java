@@ -11,7 +11,7 @@ public class AdminServiceFallback implements MyOrderService {
 
 
     @Override
-    public BaseResult orderList() {
+    public BaseResult orderList(String userid, String search, Integer page, Integer size) {
         return BaseResult.fail();
     }
 

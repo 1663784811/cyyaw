@@ -12,12 +12,13 @@ public interface OOrderService extends BaseTableService<OOrder, Integer> {
 
     /**
      * 获取我的订单
+     *
      * @param uid  用户ID
      * @param page 分页
      * @param size 大小
      * @return
      */
-    JSONArray findByUserid(String uid, Integer page, Integer size);
+    BaseResult findByUserid(String uid, String search, Integer page, Integer size);
 
     BaseResult findOrderList(Integer page, Integer size);
 

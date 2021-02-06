@@ -18,7 +18,12 @@ public interface MyOrderService {
      * 获取用户订单列表
      */
     @RequestMapping(value = "/order/myOrderList", produces = "application/json; charset=UTF-8")
-    BaseResult orderList();
+    BaseResult orderList(
+            @RequestParam("userid") String userid,
+            @RequestParam("search") String search,
+            @RequestParam("page") Integer page,
+            @RequestParam("size") Integer size
+    );
 
     @RequestMapping(value = "/order/findOrderList", produces = "application/json; charset=UTF-8")
     BaseResult findOrderList(@RequestParam("page") Integer page, @RequestParam("size") Integer size);
