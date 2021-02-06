@@ -7,5 +7,6 @@ import com.cyyaw.server.table.entity.EEnterprise;
 public interface EEnterpriseService extends BaseTableService<EEnterprise, Integer> {
 
 
+    EEnterprise saveEnterprise(EEnterprise eEnterprise);
 
 }

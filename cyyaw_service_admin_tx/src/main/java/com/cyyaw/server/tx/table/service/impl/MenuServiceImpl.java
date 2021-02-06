@@ -1,6 +1,8 @@
 package com.cyyaw.server.tx.table.service.impl;
 
 
+import com.alibaba.fastjson.JSONArray;
+import com.cyyaw.server.common.jpa.CommonDao;
 import com.cyyaw.server.tx.table.dao.MenuDao;
 import com.cyyaw.server.tx.table.service.MenuService;
 import com.cyyaw.server.tx.table.entity.TPower;
@@ -18,6 +20,9 @@ public class MenuServiceImpl implements MenuService {
     @Autowired
     private MenuDao menuDao;
 
+    @Autowired
+    private CommonDao commonDao;
+
 
     @Override
     public List<TPower> getAdminMenu(String tid) {
@@ -30,16 +35,12 @@ public class MenuServiceImpl implements MenuService {
         return menuDao.getMenuList(pageable);
     }
 
-
     @Override
     public TPower save(TPower power) {
-
-
-
-
-
-
-        return null;
+        JSONArray array = new JSONArray();
+        array.add(power);
+        JSONArray data = commonDao.update("cyyaw_tx", "t_power", array);
+        return data.getObject(0,TPower.class);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.cyyaw.server.table.service.impl;
 
+import com.cyyaw.common.util.StringUtilWHY;
 import com.cyyaw.server.common.jpa.BaseDao;
 import com.cyyaw.server.common.jpa.BaseService;
 import com.cyyaw.server.table.dao.EEnterpriseDao;
@@ -23,5 +24,13 @@ public class EEnterpriseServiceImpl extends BaseService<EEnterprise, Integer> im
         return eEnterpriseDao;
     }
 
+    @Override
+    public EEnterprise saveEnterprise(EEnterprise eEnterprise) {
+        String tid = eEnterprise.getTid();
+        if(StringUtilWHY.isEmpty(tid)){
+            eEnterprise.setTid(tid);
+        }
+        return eEnterpriseDao.save(eEnterprise);
+    }
 }
 

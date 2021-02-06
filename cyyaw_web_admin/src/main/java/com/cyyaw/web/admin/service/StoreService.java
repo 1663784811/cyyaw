@@ -30,5 +30,9 @@ public interface StoreService {
     @RequestMapping(value = "/store/admin/role/saveRole" ,produces = "application/json; charset=UTF-8")
     BaseResult saveRole(@RequestBody JSONObject json);
 
+    @RequestMapping(value = "/store/admin/enterprise/findPage" ,produces = "application/json; charset=UTF-8")
+    BaseResult findPageEnterprise(@RequestParam("page") Integer page,@RequestParam("size") Integer size);
 
+    @RequestMapping(value = "/store/admin/enterprise/saveEEnterprise" ,produces = "application/json; charset=UTF-8")
+    BaseResult saveEEnterprise(@RequestBody  JSONObject json);
 }
