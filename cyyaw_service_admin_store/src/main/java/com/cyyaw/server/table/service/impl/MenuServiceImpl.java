@@ -23,8 +23,12 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public List<EPower> getAdminMenu(String admintid) {
-        return menuDao.getAdminMenu(admintid);
+    public List<EPower> getAdminMenu(String tid,String role) {
+        if (!StringUtilWHY.isEmpty(role) && role.equals("cyyaw_enterprise")) {
+            return menuDao.getAdminMenu(tid, 1);
+        } else {
+            return menuDao.getAdminMenu(tid, 2);
+        }
     }
 
 

@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface MenuDao extends BaseDao<EPower, Integer> {
 
-    @Query("select m from EPower m where m.tid in( select t.powerid from EAdminPower t where t.adminid = ?1) or m.ispower = 0 order by m.sort asc ")
-    List<EPower>  getAdminMenu(String tid);
+    @Query("select m from EPower m where( m.tid in( select t.powerid from EAdminPower t where t.adminid = ?1) or m.ispower = 0) and m.roletype=?2 order by m.sort asc ")
+    List<EPower> getAdminMenu(String tid, Integer roletype);
 
 
     @Query("select m from EPower m where m.tid = ?1 ")
@@ -21,6 +21,6 @@ public interface MenuDao extends BaseDao<EPower, Integer> {
 
 
     @Query("select m from EPower m where length(m.treecode) > ?1 and m.treecode like concat(?2,'%')")
-    List<EPower>  findNextNode(Integer l, String oldPtreecode);
+    List<EPower> findNextNode(Integer l, String oldPtreecode);
 
 }

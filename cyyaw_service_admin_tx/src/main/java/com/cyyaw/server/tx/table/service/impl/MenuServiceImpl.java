@@ -2,6 +2,7 @@ package com.cyyaw.server.tx.table.service.impl;
 
 
 import com.alibaba.fastjson.JSONArray;
+import com.cyyaw.common.util.StringUtilWHY;
 import com.cyyaw.server.common.jpa.CommonDao;
 import com.cyyaw.server.tx.table.dao.MenuDao;
 import com.cyyaw.server.tx.table.service.MenuService;
@@ -31,7 +32,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public List<TPower> getMenuList(Integer page, Integer size) {
-        Pageable pageable = PageRequest.of(page-1, size);
+        Pageable pageable = PageRequest.of(page - 1, size);
         return menuDao.getMenuList(pageable);
     }
 
@@ -40,17 +41,11 @@ public class MenuServiceImpl implements MenuService {
         JSONArray array = new JSONArray();
         array.add(power);
         JSONArray data = commonDao.update("cyyaw_tx", "t_power", array);
-        return data.getObject(0,TPower.class);
+        return data.getObject(0, TPower.class);
     }
 
     @Override
     public void delMenu(TPower power) {
-
-
-
-
-
-
 
 
     }

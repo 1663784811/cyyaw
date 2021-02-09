@@ -8,7 +8,7 @@ public interface MenuService {
 
     List<EPower> getMenuList();
 
-    List<EPower> getAdminMenu(String admintid);
+    List<EPower> getAdminMenu(String tid,String role);
 
     EPower save(EPower ePower);
 

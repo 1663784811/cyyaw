@@ -70,4 +70,8 @@ public class EPower implements Serializable {
     @Basic
     @Column(name = "sort", length = 10, columnDefinition = "int default '1' COMMENT '排序'")
     private Integer sort;
+
+    @Basic
+    @Column(name = "roletype", columnDefinition = "int default '2' COMMENT '菜单类型{1:企业,2:门店}'")
+    private Integer roletype;
 }

@@ -77,7 +77,7 @@ public class StoreLoginController {
                     }
                 }
                 // 生成jwt
-                String token = JwtTokenUtils.createToken(name, tid, "cyyaw_store");
+                String token = JwtTokenUtils.createToken(name, tid,(StringUtilWHY.isEmpty(enterprise)?"cyyaw_store":"cyyaw_enterprise"));
                 // 保存到redis
                 UserInfo us = new UserInfo();
                 us.setToken(token);

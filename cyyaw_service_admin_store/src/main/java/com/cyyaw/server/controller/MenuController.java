@@ -2,11 +2,13 @@ package com.cyyaw.server.controller;
 
 
 import com.cyyaw.common.res.BaseResult;
+import com.cyyaw.common.util.JwtTokenUtils;
 import com.cyyaw.server.table.service.MenuService;
 import com.cyyaw.server.table.entity.EPower;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RequestMapping("/store/admin/menu")
@@ -29,9 +31,13 @@ public class MenuController {
      */
     @GetMapping("/getAdminMenu")
     public BaseResult getAdminMenu(
-            @RequestParam(value = "admintid", required = false) String admintid
+            HttpServletRequest request
     ){
-        List<EPower> list = menuService.getAdminMenu(admintid);
+        String token = request.getHeader("token");
+        String role = JwtTokenUtils.getRole(token);
+        String admintid = JwtTokenUtils.getId(token);
+
+        List<EPower> list = menuService.getAdminMenu(admintid, role);
         return BaseResult.ok(list);
     }
 
