@@ -5,6 +5,7 @@ import com.cyyaw.server.dao.MenuDao;
 import com.cyyaw.server.table.service.MenuService;
 import com.cyyaw.server.table.entity.EPower;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,8 +19,8 @@ public class MenuServiceImpl implements MenuService {
     private MenuDao menuDao;
 
     @Override
-    public List<EPower> getMenuList() {
-        return menuDao.findAll();
+    public List<EPower> getMenuList(EPower ePower) {
+        return menuDao.findAll(Example.of(ePower));
     }
 
     @Override

@@ -21,8 +21,8 @@ public class MenuController {
      * 获取菜单列表
      */
     @GetMapping("/getMenuList")
-    public BaseResult getMenuList(){
-        List<EPower> list = menuService.getMenuList();
+    public BaseResult getMenuList(EPower ePower){
+        List<EPower> list = menuService.getMenuList(ePower);
         return BaseResult.ok(list);
     }
 

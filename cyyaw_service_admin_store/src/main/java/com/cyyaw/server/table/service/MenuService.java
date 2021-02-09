@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface MenuService {
 
-    List<EPower> getMenuList();
+    List<EPower> getMenuList(EPower ePower);
 
     List<EPower> getAdminMenu(String tid,String role);
 
