@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.cyyaw.common.res.BaseResult;
 import com.cyyaw.common.util.StringUtilWHY;
+import com.cyyaw.common.util.WhyException;
 import com.cyyaw.server.common.jpa.BaseDao;
 import com.cyyaw.server.common.jpa.BaseService;
 import com.cyyaw.server.service.ComputedService;
@@ -106,6 +107,13 @@ public class OOrderServiceImpl extends BaseService<OOrder, Integer> implements O
         String addressdetail = json.getString("addressdetail");
         String phone = json.getString("phone");
         String description = json.getString("description");
+
+        if (StringUtilWHY.isEmpty(userid) ||
+                StringUtilWHY.isEmpty(enterpriseid) ||
+                StringUtilWHY.isEmpty(storeid) ||
+                StringUtilWHY.isEmpty(phone)) {
+            throw new WhyException("订单信息不全");
+        }
 
         ComputedRest computedRest = json.toJavaObject(ComputedRest.class);
         // 加锁

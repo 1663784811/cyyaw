@@ -40,6 +40,15 @@ public class EAdmin implements Serializable {
     @Basic
     @Column(name = "del", length = 10, nullable = true, columnDefinition = "int default '0' COMMENT '是否删除{0:否,1:是}'")
     private Integer del;
+
+    @Basic
+    @Column(name = "enterpriseid", columnDefinition = "varchar(32) COMMENT '所属企业e_enterprise表ID'")
+    private String enterpriseid;
+
+    @Basic
+    @Column(name = "storeid", columnDefinition = "varchar(32) COMMENT '所属门店e_storeid表ID'")
+    private String storeid;
+
     @Basic
     @Column(name = "email", nullable = true, columnDefinition = "varchar(255) COMMENT '邮箱'")
     private String email;

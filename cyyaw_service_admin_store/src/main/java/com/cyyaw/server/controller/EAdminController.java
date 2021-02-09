@@ -1,6 +1,7 @@
 package com.cyyaw.server.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.cyyaw.common.res.BaseResult;
 import com.cyyaw.common.util.StringUtilWHY;
 import com.cyyaw.server.table.entity.EAdmin;
@@ -22,6 +23,19 @@ public class EAdminController {
     @RequestMapping("/findByAccount")
     public BaseResult findEAdminByAccount(@RequestParam(value = "account") String account) {
         EAdmin eAdmin = eAdminService.findByAccount(account);
+        if (null != eAdmin) {
+            return BaseResult.ok(eAdmin);
+        } else {
+            return BaseResult.fail("用户不存在");
+        }
+    }
+
+    @RequestMapping("/findByAccountAndEnterpriseNo")
+    public BaseResult findByAccountAndEnterpriseNo(@RequestBody JSONObject js) {
+        String account = js.getString("account");
+        String code = js.getString("code");
+        String enterprise = js.getString("enterprise");
+        EAdmin eAdmin = eAdminService.findByAccountAndEnterpriseNo(account,enterprise,code);
         if (null != eAdmin) {
             return BaseResult.ok(eAdmin);
         } else {

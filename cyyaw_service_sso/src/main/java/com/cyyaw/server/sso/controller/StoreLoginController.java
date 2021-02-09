@@ -50,9 +50,15 @@ public class StoreLoginController {
         String account = json.getString("account");
         String password = json.getString("password");
         String tokenstr = request.getHeader("token");
-        String msg = null;
+        String code = json.getString("code");
+        String enterprise = json.getString("enterprise");
+        String msg;
         if (!StringUtilWHY.isEmpty(account) && !StringUtilWHY.isEmpty(password)) {
-            BaseResult baseres = storeService.findEAdminByAccount(account);
+            JSONObject js = new JSONObject();
+            js.put("code", code);
+            js.put("enterprise", enterprise);
+            js.put("account", account);
+            BaseResult baseres = storeService.findByAccountAndEnterpriseNo(js);
             if (baseres.getCode() != 200) {
                 return baseres;
             }
@@ -124,7 +130,7 @@ public class StoreLoginController {
             String pwd = passwordEncoder.encode(password + salt);
             json.put("password", pwd);
             json.put("salt", salt);
-            return  storeService.saveEAdmin(json);
+            return storeService.saveEAdmin(json);
         } else {
             return BaseResult.ok("注册失败");
         }

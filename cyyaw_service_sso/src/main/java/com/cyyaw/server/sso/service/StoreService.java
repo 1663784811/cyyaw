@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface StoreService {
 
 
-    @RequestMapping(value = "/store/admin/eadmin/findByAccount" ,produces = "application/json; charset=UTF-8")
+    @RequestMapping(value = "/store/admin/eadmin/findByAccount", produces = "application/json; charset=UTF-8")
     BaseResult findEAdminByAccount(@RequestParam(value = "account") String account);
 
-    @RequestMapping(value = "/store/admin/eadmin/saveEAdmin" ,produces = "application/json; charset=UTF-8")
+    @RequestMapping(value = "/store/admin/eadmin/saveEAdmin", produces = "application/json; charset=UTF-8")
     BaseResult saveEAdmin(@RequestBody JSONObject json);
+
+    @RequestMapping(value = "/store/admin/eadmin/findByAccountAndEnterpriseNo", produces = "application/json; charset=UTF-8")
+    BaseResult findByAccountAndEnterpriseNo(@RequestBody JSONObject json);
 }

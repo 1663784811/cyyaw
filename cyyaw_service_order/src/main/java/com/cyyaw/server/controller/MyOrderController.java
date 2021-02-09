@@ -24,8 +24,6 @@ public class MyOrderController {
      */
     @PostMapping("/createOrder")
     public BaseResult createOrder(@RequestBody JSONObject json) {
-
-
         ComputedRest order = oOrderService.createOrder(json);
         return BaseResult.ok(order);
     }
