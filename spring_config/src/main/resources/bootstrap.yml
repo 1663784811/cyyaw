@@ -8,10 +8,10 @@ spring:
     config:
       server:
         git:
-          uri: https://gitee.com/cyyaw/cyyaw.git
+          uri: https://github.com/1663784811/cyyaw.git
           search-paths: /config-respo
-          username: 1663784811@qq.com  #账号密码写真实的快一些我觉得，不使用也能访问有点慢
-          password: ab9519895230.
+          # username: xxxxxxxxxxxxxxx  #账号密码写真实的快一些我觉得，不使用也能访问有点慢
+          # password: xxxxxxxxxxxxxxxx
 
   rabbitmq: #本地环境不需要配置mq
     host: 192.168.0.111
