@@ -14,7 +14,7 @@ spring:
           #password: 12345678
 
   rabbitmq: #本地环境不需要配置mq
-    host: 192.168.0.104
+    host: 192.168.0.111
     port: 5672
     username: root
     password: root
