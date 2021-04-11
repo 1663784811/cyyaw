@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('pwd') {
+    stage('mmss') {
       steps {
         sh 'pwd'
       }
