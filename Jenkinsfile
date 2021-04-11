@@ -4,6 +4,7 @@ pipeline {
     stage('mmss') {
       steps {
         sh 'pwd'
+        sh 'll'
       }
     }
 
